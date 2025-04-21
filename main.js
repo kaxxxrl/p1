@@ -25,41 +25,27 @@ client.once('ready', () => {
 
 // Reklama serwera
 const serverAd = `
-# 🚀 Witaj w Coding Zone! 🚀
-**🔥 Czy jesteś gotowy, by dołączyć do najgorętszej społeczności programistów na Discordzie? 🔥**
+# Zatoka ADS ⚡️
+Twoje centrum reklamy i promocji!
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛵️ Szukasz miejsca, gdzie Twoja reklama naprawdę wypłynie na szerokie wody?
+Witamy w Zatoce ADS  
 
-⟨👨‍💻⟩ **Coding Zone** to miejsce, gdzie pasjonaci kodowania spotykają się, by:
-  
->      ⟨💡⟩ **Dzielić się swoimi projektami** i osiągnięciami,
->  ⟨🤝⟩ **Pomagać sobie nawzajem** w rozwiązywaniu problemów,
->  ⟨🎉⟩ **Relaksować się** na kanałach for fun – nawet najlepszy kod czasem potrzebuje przerwy!
+✨ Co oferujemy?
+➤ 🚀 Szybkie i darmowe promowanie serwerów Discord,social mediów i nie tylko!
+➤ ❤️ Przyjazną i aktywną społeczność.
+➤ 🗂️ Dużo przejrzystych kategorii reklamowych, by Twoja reklama trafiła dokładnie tam, gdzie trzeba.
+➤ 🎉 Strefa 4fun — konkursy, mini-gry, eventy i luźne rozmowy!
+➤ ✨ Estetyczny, przejrzysty wygląd serwera, który sprzyja promocji i dobrej atmosferze.
+➤ 🎁 Giveaway'e i specjalne promocje dla aktywnych użytkowników!
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚓ Dlaczego właśnie Zatoka ADS?
+➤ 📜 Przejrzyste zasady, brak chaosu, aktywna moderacja 
 
-⟨💬⟩ **Masz pytanie?** Nasi eksperci są zawsze gotowi, by pomóc!
-⟨🎮⟩ **Chcesz odpocząć?** Zagraj z nami w gry, porozmawiaj na luźne tematy lub po prostu zrelaksuj się w towarzystwie ludzi, którzy rozumieją Twoją pasję.
+⏳ Nie czekaj!
+Dołącz już teraz i rozwiń swoje żagle z Zatoką ADS! ⛵✨
 
-────────────────────────────────────────────────────────────────────────────────────
-
-# 🌟 DLACZEGO CODING ZONE? 🌟
-
->      ⟨✅⟩ **Aktywna społeczność** – zawsze ktoś jest online!
->      ⟨✅⟩ **Kanały tematyczne** – od ⟨🐍⟩ Python po ⟨🟨⟩ JavaScript, od ⟨🤖⟩ AI po ⟨🌐⟩ web dev!
->      ⟨✅⟩ **Kanały rozrywkowe** – ⟨📸⟩ memy, ⟨🎲⟩ gry, ⟨🎵⟩ muzyka i wiele więcej!
->      ⟨✅⟩ **Wydarzenia i konkursy** – bo kodowanie to nie tylko praca, ale też zabawa!
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-# 🔗 DOŁĄCZ JUŻ TERAZ! 🔗
-👉 [KLIKNIJ TUTAJ, BY DOŁĄCZYĆ!](https://discord.gg/erDFWnB5pB) 👈
-Gif: https://cdn.discordapp.com/attachments/1348199237673947167/1349117172340756530/coding_zone_gif.gif?ex=67d1eec7&is=67d09d47&hm=5c2adf45485c262dd70cfa09b2f4b6e8171b97791adb52c24e4defe9ccb8792c&
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-**🎉 CZEKAMY WŁAŚNIE NA CIEBIE! 🎉**
-# 🔥 Let’s code, share, and have fun together! 🔥
+link🔗: || https://discord.gg/zwJBBfNEGY ||  || https://cdn.discordapp.com/attachments/1363565188833349881/1363750526906269776/lv_0_20250421073621.gif?ex=68072b26&is=6805d9a6&hm=fc37457f754af9286bce2bca92f9a28481e3d10a69687f1d95585e10cb62a1fd& ||
 `;
 
 // Lista użytkowników partnerstwa i ich czas ostatniego partnerstwa
@@ -69,8 +55,8 @@ const partnershipTimestamps = new Map();
 client.once('ready', () => {
   console.log(`Bot ${client.user.tag} jest gotowy.`);
   // Wysyłanie wiadomości co 6 minut
-  const channelId_partnerstwa = '1346609247869337701';
-  const serverId = '1348273862365941780';
+  const channelId_partnerstwa = '1363565188573564985';
+  const serverId = '1363565181048983562';
   setInterval(async () => {
     const channel = client.channels.cache.get(channelId_partnerstwa);
     if (channel) {
@@ -81,18 +67,18 @@ client.once('ready', () => {
   }, 6 * 60 * 1000); // 6 minut w milisekundach
 
   // reklamowanie serwera
-  const channelId_programming = '1346609292425429194';
+  const channelId_advertising = '1346609272447832067';
   const channelId_global = '1348329636056268911';
   const zimoweall = '1346609268375158834';
-  const zimowethematic = '1346609283932094529';
-  const zimowetech = '1346609290332602420';
+  const zimowegiveaways= '1346609282174685264';
+  const zimowe4h = '1346609313329971293';
   const zimowe6h = '1346609312042324060';
   setInterval(async () => {
-    const channel = client.channels.cache.get(channelId_programming);
+    const channel = client.channels.cache.get(channelId_advertising);
     const channel_global = client.channels.cache.get(channelId_global);
     const zimoweall1 = client.channels.cache.get(zimoweall);
-    const zimowethematic1 = client.channels.cache.get(zimowethematic);
-    const zimowetech1 = client.channels.cache.get(zimowetech);
+    const zimowethematic1 = client.channels.cache.get(zimowegiveaways);
+    const zimowetech1 = client.channels.cache.get(zimowe4h);
     const zimowe6h1 = client.channels.cache.get(zimowe6h);
     if (channel) {
       await channel.send(serverAd);
@@ -101,7 +87,7 @@ client.once('ready', () => {
       await zimowethematic1.send(serverAd);
       await zimowetech1.send(serverAd);
     } else {
-      console.error(`Nie znaleziono kanału o ID ${channelId_programming}`);
+      console.error(`Nie znaleziono kanału o ID ${channelId_advertising}`);
     }
   }, 11 * 60 * 1000); // 11 minut w milisekundach
 });
@@ -138,12 +124,12 @@ client.on('messageCreate', async (message) => {
         const reply = await message.channel.awaitMessages({ filter, max: 1, time: 60000, errors: ['time'] }).catch(() => null);
 
         if (reply && !reply.first().content.toLowerCase().includes('nie')) {
-          await message.channel.send("Mój właściciel @bRtech za niedługo na pewno dołączy do twojego serwera");
-          const notificationUser = await client.users.fetch('782647700403257375');
+          await message.channel.send("Mój właściciel @bqztk za niedługo na pewno dołączy do twojego serwera");
+          const notificationUser = await client.users.fetch('1087428851036082266');
           await notificationUser.send(`Wymagane dołączenie na serwer:\n${userAd}`);
         }
 
-        const guild = client.guilds.cache.get('1348273862365941780');
+        const guild = client.guilds.cache.get('1363565181048983562');
         if (!guild) {
           await message.channel.send("❕ Nie znaleziono serwera.");
           return;
@@ -155,8 +141,7 @@ client.on('messageCreate', async (message) => {
           return;
         }
 
-        const channel = guild.channels.cache.find(ch => ch.name === '「💼」współprace' && ch.isText());
-        if (!channel) {
+         const channel = client.channels.cache.get('1345498439940833371')
           await message.channel.send("Nie znaleziono kanału '「💼」współprace'.");
           return;
         }
