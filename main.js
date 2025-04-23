@@ -59,7 +59,7 @@ setInterval(async () => {
 }, 5 * 60 * 1000);  // 5 minut
 
 
-// Reklamowanie serwera co 1 minutę, 10 minut, 15 minut, 30 minut, 1 godzina, 2 godziny, 4 godziny i 6 godzin
+// Reklamowanie serwera co 2.5 minuty, 10 minut, 15 minut, 30 minut, 1 godzina, 2 godziny, 4 godziny i 6 godzin
 const channelId_programming = '1346609272447832067'; // Advertising
 const channelId_global = '1348329636056268911';
 const zimoweall = '1346609268375158834';
@@ -72,7 +72,7 @@ const thirtymin = '1346609317335531632'; // 30 minut
 const fifteenmin = '1346609318476255293'; // 15 minut
 const onemin = '1346609319877279794'; // 1 minuta
 
-// Wysyłanie wiadomości co 1 minutę
+// Wysyłanie wiadomości co 2.5 minuty
 setInterval(async () => {
   const onemin1 = client.channels.cache.get(onemin);
 
@@ -81,7 +81,7 @@ setInterval(async () => {
   } else {
     console.error(`Nie znaleziono kanału 1 minuta.`);
   }
-}, 1 * 60 * 1000);  // 1 minuta
+}, 2.5 * 60 * 1000);  // 2.5 minuty
 
 // Wysyłanie wiadomości co 10 minut
 setInterval(async () => {
@@ -151,18 +151,8 @@ setInterval(async () => {
   } else {
     console.error(`Nie znaleziono kanału 4hrs.`);
   }
-}, 4 * 60 * 60 * 1000);  // 4 godziny
+}, 4 * 60 * 60 * 1000); 
 
-// Wysyłanie wiadomości co 6 godzin
-setInterval(async () => {
-  const zimowe6h1 = client.channels.cache.get(zimowe6h);
-
-  if (zimowe6h1) {
-    await zimowe6h1.send(serverAd);
-  } else {
-    console.error(`Nie znaleziono kanału zimowe6h.`);
-  }
-}, 6 * 60 * 60 * 1000);  // 6 godzin
 
 
 
