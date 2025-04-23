@@ -59,32 +59,51 @@ setInterval(async () => {
 }, 5 * 60 * 1000);  // 5 minut
 
 
-  // Reklamowanie serwera co 11 minut
-  const channelId_programming = '1346609272447832067'; // Advertising
-  const channelId_global = '1348329636056268911';
-  const zimoweall = '1346609268375158834';
-  const fourhrs = '1346609313329971293'; // 4hrs
-  const zeroToHundred = '1346609263681732710'; // 0-100
-  const zimowe6h = '1346609312042324060';
+// Reklamowanie serwera co 10 minut, 4 godziny i 6 godzin
+const channelId_programming = '1346609272447832067'; // Advertising
+const channelId_global = '1348329636056268911';
+const zimoweall = '1346609268375158834';
+const fourhrs = '1346609313329971293'; // 4hrs
+const zeroToHundred = '1346609263681732710'; // 0-100
+const zimowe6h = '1346609312042324060';
 
-  setInterval(async () => {
-    const channel_global = client.channels.cache.get(channelId_global);
-    const zimoweall1 = client.channels.cache.get(zimoweall);
-    const fourhrs1 = client.channels.cache.get(fourhrs);
-    const zeroToHundred1 = client.channels.cache.get(zeroToHundred);
-    const zimowe6h1 = client.channels.cache.get(zimowe6h);
+// Wysyłanie wiadomości co 10 minut
+setInterval(async () => {
+  const channel_global = client.channels.cache.get(channelId_global);
+  const zimoweall1 = client.channels.cache.get(zimoweall);
+  const zeroToHundred1 = client.channels.cache.get(zeroToHundred);
 
-    if (channel_global && zimoweall1 && fourhrs1 && zeroToHundred1 && zimowe6h1) {
-      await channel_global.send(serverAd);
-      await zimoweall1.send(serverAd);
-      await fourhrs1.send(serverAd);
-      await zeroToHundred1.send(serverAd);
-      await zimowe6h1.send(serverAd);
-    } else {
-      console.error(`Nie znaleziono któregoś z kanałów reklamowych.`);
-    }
-  }, 11 * 60 * 1000);
-});
+  if (channel_global && zimoweall1 && zeroToHundred1) {
+    await channel_global.send(serverAd);
+    await zimoweall1.send(serverAd);
+    await zeroToHundred1.send(serverAd);
+  } else {
+    console.error(`Nie znaleziono któregoś z kanałów reklamowych.`);
+  }
+}, 10 * 60 * 1000);  // 10 minut
+
+// Wysyłanie wiadomości co 4 godziny
+setInterval(async () => {
+  const fourhrs1 = client.channels.cache.get(fourhrs);
+
+  if (fourhrs1) {
+    await fourhrs1.send(serverAd);
+  } else {
+    console.error(`Nie znaleziono kanału 4hrs.`);
+  }
+}, 4 * 60 * 60 * 1000);  // 4 godziny
+
+// Wysyłanie wiadomości co 6 godzin
+setInterval(async () => {
+  const zimowe6h1 = client.channels.cache.get(zimowe6h);
+
+  if (zimowe6h1) {
+    await zimowe6h1.send(serverAd);
+  } else {
+    console.error(`Nie znaleziono kanału zimowe6h.`);
+  }
+}, 6 * 60 * 60 * 1000);  // 6 godzin
+
 
 client.on('messageCreate', async (message) => {
   if (!message.guild && !message.author.bot && message.author.id !== client.user.id) {
