@@ -52,7 +52,7 @@ const channelId_partnerstwa = '1346609247869337701';
 setInterval(async () => {
   const channel = client.channels.cache.get(channelId_partnerstwa);
   if (channel) {
-    await channel.send('# Szukam partnerstw do serwera z reklamami napisz PV!');
+    await channel.send('# Szukam partnerstw dowolne serwery! Zapraszam pv');
   } else {
     console.error(`Nie znaleziono kanału o ID ${channelId_partnerstwa}`);
   }
