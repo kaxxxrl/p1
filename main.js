@@ -47,16 +47,17 @@ const partnershipTimestamps = new Map();
 client.once('ready', () => {
   console.log(`Bot ${client.user.tag} jest gotowy.`);
 
-  // Partnerstwa PV co 6 minut
-  const channelId_partnerstwa = '1346609247869337701';
-  setInterval(async () => {
-    const channel = client.channels.cache.get(channelId_partnerstwa);
-    if (channel) {
-      await channel.send('# Szukam partnerstw do serwera z reklamami napisz PV!');
-    } else {
-      console.error(`Nie znaleziono kanału o ID ${channelId_partnerstwa}`);
-    }
-  }, 6 * 60 * 1000);
+  // Partnerstwa PV co 5 minut
+const channelId_partnerstwa = '1346609247869337701';
+setInterval(async () => {
+  const channel = client.channels.cache.get(channelId_partnerstwa);
+  if (channel) {
+    await channel.send('# Szukam partnerstw do serwera z reklamami napisz PV!');
+  } else {
+    console.error(`Nie znaleziono kanału o ID ${channelId_partnerstwa}`);
+  }
+}, 5 * 60 * 1000);  // 5 minut
+
 
   // Reklamowanie serwera co 11 minut
   const channelId_programming = '1346609272447832067'; // Advertising
