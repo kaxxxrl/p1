@@ -1,11 +1,7 @@
-const { Client, Intents } = require('discord.js-selfbot-v13');
-const { MessageEmbed } = require('discord.js-selfbot-v13');
+const { Client, Intents, MessageEmbed } = require('discord.js-selfbot-v13');
 const express = require('express');
 const app = express();
 const PORT = 8080;
-const Discord = require('discord.js-selfbot-v13');
-
-// Konfiguracja klienta Discord
 const client = new Client({
   checkUpdate: false,
 });
@@ -17,11 +13,6 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Serwer pingujący działa na porcie ${PORT}`);
-});
-
-// Obsługa zdarzeń Discorda
-client.once('ready', () => {
-  console.log(`Zalogowano jako ${client.user.tag}!`);
 });
 
 // Reklama serwera
@@ -46,7 +37,7 @@ Witamy w Zatoce ADS
 ⏳ Nie czekaj!
 Dołącz już teraz i rozwiń swoje żagle z Zatoką ADS! ⛵✨
 
-link🔗: || https://discord.gg/zwJBBfNEGY || || https://cdn.discordapp.com/attachments/1363565188833349881/1363750526906269776/lv_0_20250421073621.gif ||
+link🔗: || https://discord.gg/zwJBBfNEGY ||  || https://cdn.discordapp.com/attachments/1363565188833349881/1363750526906269776/lv_0_20250421073621.gif?ex=68072b26&is=6805d9a6&hm=fc37457f754af9286bce2bca92f9a28481e3d10a69687f1d95585e10cb62a1fd& ||
 `;
 
 // Lista użytkowników partnerstwa i ich czas ostatniego partnerstwa
@@ -56,9 +47,8 @@ const partnershipTimestamps = new Map();
 client.once('ready', () => {
   console.log(`Bot ${client.user.tag} jest gotowy.`);
 
-  // Wysyłanie wiadomości co 6 minut
+  // Partnerstwa PV co 6 minut
   const channelId_partnerstwa = '1346609247869337701';
-  const serverId = '1348273862365941780';
   setInterval(async () => {
     const channel = client.channels.cache.get(channelId_partnerstwa);
     if (channel) {
@@ -66,32 +56,33 @@ client.once('ready', () => {
     } else {
       console.error(`Nie znaleziono kanału o ID ${channelId_partnerstwa}`);
     }
-  }, 6 * 60 * 1000); // 6 minut
+  }, 6 * 60 * 1000);
 
-  // reklamowanie serwera
-  const channelId_advertising = '1346609272447832067'; // Advertising
+  // Reklamowanie serwera co 11 minut
+  const channelId_programming = '1346609272447832067'; // Advertising
   const channelId_global = '1348329636056268911';
   const zimoweall = '1346609268375158834';
-  const fourHours = '1346609313329971293'; // 4hrs
+  const fourhrs = '1346609313329971293'; // 4hrs
   const zeroToHundred = '1346609263681732710'; // 0-100
   const zimowe6h = '1346609312042324060';
 
   setInterval(async () => {
-    const channel = client.channels.cache.get(channelId_advertising);
     const channel_global = client.channels.cache.get(channelId_global);
     const zimoweall1 = client.channels.cache.get(zimoweall);
-    const fourHours1 = client.channels.cache.get(fourHours);
+    const fourhrs1 = client.channels.cache.get(fourhrs);
     const zeroToHundred1 = client.channels.cache.get(zeroToHundred);
     const zimowe6h1 = client.channels.cache.get(zimowe6h);
-    if (channel) {
+
+    if (channel_global && zimoweall1 && fourhrs1 && zeroToHundred1 && zimowe6h1) {
       await channel_global.send(serverAd);
       await zimoweall1.send(serverAd);
-      await fourHours1.send(serverAd);
+      await fourhrs1.send(serverAd);
       await zeroToHundred1.send(serverAd);
+      await zimowe6h1.send(serverAd);
     } else {
-      console.error(`Nie znaleziono kanału o ID ${channelId_advertising}`);
+      console.error(`Nie znaleziono któregoś z kanałów reklamowych.`);
     }
-  }, 11 * 60 * 1000); // 11 minut
+  }, 11 * 60 * 1000);
 });
 
 client.on('messageCreate', async (message) => {
@@ -120,7 +111,7 @@ client.on('messageCreate', async (message) => {
         const reply = await message.channel.awaitMessages({ filter, max: 1, time: 60000, errors: ['time'] }).catch(() => null);
 
         if (reply && !reply.first().content.toLowerCase().includes('nie')) {
-          await message.channel.send("Mój właściciel @bqztk za niedługo na pewno dołączy do twojego serwera");
+          await message.channel.send("Mój właściciel @bqztk za niedługo na pewno dołączy do twojego serwera.");
           const notificationUser = await client.users.fetch('1087428851036082266');
           await notificationUser.send(`Wymagane dołączenie na serwer:\n${userAd}`);
         }
@@ -143,9 +134,8 @@ client.on('messageCreate', async (message) => {
           return;
         }
 
-        const displayName = member ? member.displayName : message.author.username;
         await channel.send(`${userAd}\n\nPartnerstwo z: ${member}`);
-        await message.channel.send("✅ Dziękujemy za partnerstwo! W razie jakichkolwiek pytań prosimy o kontakt z użytkownikiem bqrzk (bqrzk)");
+        await message.channel.send("✅ Dziękujemy za partnerstwo! W razie pytań kontaktuj się z użytkownikiem @bqrzk (bqrzk)");
 
         partnershipTimestamps.set(message.author.id, now);
         partneringUsers.delete(message.author.id);
@@ -159,13 +149,11 @@ client.on('guildMemberAdd', async (member) => {
     const userAd = partneringUsers.get(member.id);
     const channel = member.guild.channels.cache.find(ch => ch.name === '💼・partnerstwa' && ch.isText());
     if (channel) {
-      const displayName = member.displayName;
       await channel.send(`${userAd}\n\nPartnerstwo z: ${member}`);
       const dmChannel = await member.createDM();
       await dmChannel.send("✅ Dziękujemy za dołączenie! Twoja reklama została wstawiona.");
       partneringUsers.delete(member.id);
-      const now = Date.now();
-      partnershipTimestamps.set(member.id, now);
+      partnershipTimestamps.set(member.id, Date.now());
     } else {
       console.error("Nie znaleziono kanału '💼・partnerstwa'.");
     }
@@ -180,5 +168,5 @@ process.on('unhandledRejection', (error) => {
   console.error('Nieobsłużony błąd:', error);
 });
 
-// Logowanie
+// Logowanie do Discorda
 client.login(process.env.DISCORD_TOKEN);
