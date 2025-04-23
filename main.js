@@ -46,7 +46,7 @@ link🔗: || https://discord.gg/zwJBBfNEGY ||  || https://cdn.discordapp.com/att
 const partneringUsers = new Map();
 const partnershipTimestamps = new Map();
 
-// Ustawienie funkcji, które wysyłają reklamy
+// Ustawienie funkcji, które wysyłają wiadomości co określony czas
 const channelId_partnerstwa = '1346609247869337701';
 const channelId_global = '1348329636056268911';
 const zimoweall = '1346609268375158834';
@@ -58,6 +58,11 @@ const onehr = '1346609316190486528';
 const thirtymin = '1346609317335531632';
 const fifteenmin = '1346609318476255293';
 const onemin = '1346609319877279794';
+const miastoAds = '1254165815071342602'; // ID kanału miasto ads
+const miastopartnerstwa = '1332399570872832151'; // ID kanału miastopartnerstwa
+const miastoall = '1254165638331502653'; // ID kanału miastoall na drugim serwerze
+const miasto6h = '1254123088103346247'; // ID kanału miasto6h
+const miasto2gdz = '1254163564264947782'; // ID kanału miasto2gdz na drugim serwerze
 
 // Funkcje wysyłające wiadomości co określony czas
 client.once('ready', () => {
@@ -147,6 +152,46 @@ client.once('ready', () => {
       console.error(`Nie znaleziono kanału 4hrs.`);
     }
   }, 4 * 60 * 60 * 1000);  // 4 godziny
+
+  // Wysyłanie wiadomości # Partnerstwo? PV! co 2 godziny do miastopartnerstwa
+  setInterval(async () => {
+    const miastopartnerstwaChannel = client.channels.cache.get(miastopartnerstwa);
+    if (miastopartnerstwaChannel) {
+      await miastopartnerstwaChannel.send('# Partnerstwo? PV!');
+    } else {
+      console.error(`Nie znaleziono kanału 'miastopartnerstwa'.`);
+    }
+  }, 2 * 60 * 60 * 1000);  // 2 godziny
+
+  // Wysyłanie reklamy co 2 godziny do kanału miastoall
+  setInterval(async () => {
+    const miastoallChannel = client.channels.cache.get(miastoall);
+    if (miastoallChannel) {
+      await miastoallChannel.send(serverAd);
+    } else {
+      console.error(`Nie znaleziono kanału 'miastoall'.`);
+    }
+  }, 2 * 60 * 60 * 1000);  // 2 godziny
+
+  // Wysyłanie reklamy co 6 godzin do kanału miasto6h
+  setInterval(async () => {
+    const miasto6hChannel = client.channels.cache.get(miasto6h);
+    if (miasto6hChannel) {
+      await miasto6hChannel.send(serverAd);
+    } else {
+      console.error(`Nie znaleziono kanału 'miasto6h'.`);
+    }
+  }, 6 * 60 * 60 * 1000);  // 6 godzin
+
+  // Wysyłanie reklamy co 2 godziny do kanału miasto2gdz
+  setInterval(async () => {
+    const miasto2gdzChannel = client.channels.cache.get(miasto2gdz);
+    if (miasto2gdzChannel) {
+      await miasto2gdzChannel.send(serverAd);
+    } else {
+      console.error(`Nie znaleziono kanału 'miasto2gdz'.`);
+    }
+  }, 2 * 60 * 60 * 1000);  // 2 godziny
 });
 
 // Obsługa partnerstw
