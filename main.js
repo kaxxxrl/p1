@@ -59,13 +59,29 @@ setInterval(async () => {
 }, 5 * 60 * 1000);  // 5 minut
 
 
-// Reklamowanie serwera co 10 minut, 4 godziny i 6 godzin
+// Reklamowanie serwera co 1 minutę, 10 minut, 15 minut, 30 minut, 1 godzina, 2 godziny, 4 godziny i 6 godzin
 const channelId_programming = '1346609272447832067'; // Advertising
 const channelId_global = '1348329636056268911';
 const zimoweall = '1346609268375158834';
 const fourhrs = '1346609313329971293'; // 4hrs
 const zeroToHundred = '1346609263681732710'; // 0-100
 const zimowe6h = '1346609312042324060';
+const twohrs = '1346609314927743047'; // 2 godziny
+const onehr = '1346609316190486528'; // 1 godzina
+const thirtymin = '1346609317335531632'; // 30 minut
+const fifteenmin = '1346609318476255293'; // 15 minut
+const onemin = '1346609319877279794'; // 1 minuta
+
+// Wysyłanie wiadomości co 1 minutę
+setInterval(async () => {
+  const onemin1 = client.channels.cache.get(onemin);
+
+  if (onemin1) {
+    await onemin1.send(serverAd);
+  } else {
+    console.error(`Nie znaleziono kanału 1 minuta.`);
+  }
+}, 1 * 60 * 1000);  // 1 minuta
 
 // Wysyłanie wiadomości co 10 minut
 setInterval(async () => {
@@ -81,6 +97,50 @@ setInterval(async () => {
     console.error(`Nie znaleziono któregoś z kanałów reklamowych.`);
   }
 }, 10 * 60 * 1000);  // 10 minut
+
+// Wysyłanie wiadomości co 15 minut
+setInterval(async () => {
+  const fifteenmin1 = client.channels.cache.get(fifteenmin);
+
+  if (fifteenmin1) {
+    await fifteenmin1.send(serverAd);
+  } else {
+    console.error(`Nie znaleziono kanału 15 minut.`);
+  }
+}, 15 * 60 * 1000);  // 15 minut
+
+// Wysyłanie wiadomości co 30 minut
+setInterval(async () => {
+  const thirtymin1 = client.channels.cache.get(thirtymin);
+
+  if (thirtymin1) {
+    await thirtymin1.send(serverAd);
+  } else {
+    console.error(`Nie znaleziono kanału 30 minut.`);
+  }
+}, 30 * 60 * 1000);  // 30 minut
+
+// Wysyłanie wiadomości co 1 godzinę
+setInterval(async () => {
+  const onehr1 = client.channels.cache.get(onehr);
+
+  if (onehr1) {
+    await onehr1.send(serverAd);
+  } else {
+    console.error(`Nie znaleziono kanału 1 godzina.`);
+  }
+}, 1 * 60 * 60 * 1000);  // 1 godzina
+
+// Wysyłanie wiadomości co 2 godziny
+setInterval(async () => {
+  const twohrs1 = client.channels.cache.get(twohrs);
+
+  if (twohrs1) {
+    await twohrs1.send(serverAd);
+  } else {
+    console.error(`Nie znaleziono kanału 2 godziny.`);
+  }
+}, 2 * 60 * 60 * 1000);  // 2 godziny
 
 // Wysyłanie wiadomości co 4 godziny
 setInterval(async () => {
@@ -103,6 +163,7 @@ setInterval(async () => {
     console.error(`Nie znaleziono kanału zimowe6h.`);
   }
 }, 6 * 60 * 60 * 1000);  // 6 godzin
+
 
 
 client.on('messageCreate', async (message) => {
