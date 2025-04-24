@@ -1,4 +1,3 @@
-
 const { Client, Intents, MessageEmbed } = require('discord.js-selfbot-v13');
 const express = require('express');
 const app = express();
@@ -43,6 +42,7 @@ link🔗: || https://discord.gg/zwJBBfNEGY ||  || https://cdn.discordapp.com/att
 const partneringUsers = new Map();
 const partnershipTimestamps = new Map();
 
+// Istniejące kanały
 const channelId_partnerstwa = '1346609247869337701';
 const channelId_global = '1348329636056268911';
 const zimoweall = '1346609268375158834';
@@ -59,16 +59,28 @@ const miastopartnerstwa = '1332399570872832151';
 const miastoall = '1254165638331502653';
 const miasto6h = '1254123088103346247';
 const miasto2gdz = '1254163564264947782';
-const zeroToOneHundred_2h = '1254162168899960883'; // Nowy kanał 0-101
+const zeroToOneHundred_2h = '1254162168899960883';
+
+// Nowe kanały HyperADS
+const hyper_0to100 = '1295166655415980072';
+const hyper_all = '1286351421133815988';
+const hyper_adsss = '1286351421133815991';
+const hyper_others = '1286351421457039388';
+const partners_hyper = '1286351421691793466';
+const hyper_6h = '1286351420911521829';
+const hyper_3h = '1286351420911521830';
+const hyper_1h = '1286351421133815982';
 
 client.once('ready', () => {
   console.log(`Bot ${client.user.tag} jest gotowy.`);
 
+  // Reklama partnerstw
   setInterval(async () => {
     const channel = client.channels.cache.get(channelId_partnerstwa);
     if (channel) await channel.send('# Szukam partnerstw dowolne serwery! Zapraszam pv');
   }, 5 * 60 * 1000);
 
+  // Wysyłanie reklam w różnych odstępach czasu
   setInterval(async () => {
     const channel = client.channels.cache.get(onemin);
     if (channel) await channel.send(serverAd);
@@ -86,54 +98,44 @@ client.once('ready', () => {
   }, 10 * 60 * 1000);
 
   setInterval(async () => {
-    const channel = client.channels.cache.get(fifteenmin);
-    if (channel) await channel.send(serverAd);
+    const list = [fifteenmin, thirtymin, onehr, twohrs, fourhrs];
+    for (const id of list) {
+      const channel = client.channels.cache.get(id);
+      if (channel) await channel.send(serverAd);
+    }
   }, 15 * 60 * 1000);
 
   setInterval(async () => {
-    const channel = client.channels.cache.get(thirtymin);
-    if (channel) await channel.send(serverAd);
-  }, 30 * 60 * 1000);
+    const list = [miastopartnerstwa, miastoall, miasto6h, miasto2gdz, zeroToOneHundred_2h];
+    for (const id of list) {
+      const channel = client.channels.cache.get(id);
+      if (channel) await channel.send(serverAd);
+    }
+  }, 2 * 60 * 60 * 1000);
 
+  // Nowe interwały HyperADS
   setInterval(async () => {
-    const channel = client.channels.cache.get(onehr);
-    if (channel) await channel.send(serverAd);
+    const channels = [hyper_0to100, hyper_all, hyper_adsss, hyper_others, hyper_1h];
+    for (const id of channels) {
+      const channel = client.channels.cache.get(id);
+      if (channel) await channel.send(serverAd);
+    }
   }, 1 * 60 * 60 * 1000);
 
   setInterval(async () => {
-    const channel = client.channels.cache.get(twohrs);
-    if (channel) await channel.send(serverAd);
-  }, 2 * 60 * 60 * 1000);
-
-  setInterval(async () => {
-    const channel = client.channels.cache.get(fourhrs);
-    if (channel) await channel.send(serverAd);
-  }, 4 * 60 * 60 * 1000);
-
-  setInterval(async () => {
-    const channel = client.channels.cache.get(miastopartnerstwa);
+    const channel = client.channels.cache.get(partners_hyper);
     if (channel) await channel.send('# Partnerstwo? PV!');
-  }, 2 * 60 * 60 * 1000);
+  }, 1 * 60 * 60 * 1000);
 
   setInterval(async () => {
-    const channel = client.channels.cache.get(miastoall);
-    if (channel) await channel.send(serverAd);
-  }, 2 * 60 * 60 * 1000);
-
-  setInterval(async () => {
-    const channel = client.channels.cache.get(miasto6h);
+    const channel = client.channels.cache.get(hyper_6h);
     if (channel) await channel.send(serverAd);
   }, 6 * 60 * 60 * 1000);
 
   setInterval(async () => {
-    const channel = client.channels.cache.get(miasto2gdz);
+    const channel = client.channels.cache.get(hyper_3h);
     if (channel) await channel.send(serverAd);
-  }, 2 * 60 * 60 * 1000);
-
-  setInterval(async () => {
-    const channel = client.channels.cache.get(zeroToOneHundred_2h);
-    if (channel) await channel.send(serverAd);
-  }, 2 * 60 * 60 * 1000);
+  }, 3 * 60 * 60 * 1000);
 });
 
 client.on('messageCreate', async (message) => {
@@ -147,7 +149,7 @@ client.on('messageCreate', async (message) => {
 
     if (!partneringUsers.has(message.author.id)) {
       partneringUsers.set(message.author.id, null);
-     return message.channel.send("🌎 Jeśli chcesz nawiązać partnerstwo, wyślij swoją reklamę (maksymalnie 1 serwer).");
+      return message.channel.send("🌎 Jeśli chcesz nawiązać partnerstwo, wyślij swoją reklamę (maksymalnie 1 serwer).”);
     }
 
     const userAd = partneringUsers.get(message.author.id);
