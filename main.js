@@ -149,7 +149,7 @@ client.on('messageCreate', async (message) => {
 
     if (!partneringUsers.has(message.author.id)) {
       partneringUsers.set(message.author.id, null);
-      return message.channel.send("🌎 Jeśli chcesz nawiązać partnerstwo, wyślij swoją reklamę (maksymalnie 1 serwer).”);
+     return message.channel.send("🌎 Jeśli chcesz nawiązać partnerstwo, wyślij swoją reklamę (maksymalnie 1 serwer).");
     }
 
     const userAd = partneringUsers.get(message.author.id);
