@@ -106,7 +106,7 @@ client.once('ready', () => {
   }, 15 * 60 * 1000);
 
   setInterval(async () => {
-    const list = [miastopartnerstwa, miastoall, miasto6h, miasto2gdz, zeroToOneHundred_2h];
+    const list = [ miastoall, miasto6h, miasto2gdz, zeroToOneHundred_2h];
     for (const id of list) {
       const channel = client.channels.cache.get(id);
       if (channel) await channel.send(serverAd);
@@ -121,7 +121,11 @@ client.once('ready', () => {
       if (channel) await channel.send(serverAd);
     }
   }, 1 * 60 * 60 * 1000);
-
+ setInterval(async () => {
+    const channel = client.channels.cache.get(miastopartnerstwa);
+    if (channel) await channel.send('# Partnerstwo? PV!');
+  }, 2 * 60 * 60 * 1000);
+  
   setInterval(async () => {
     const channel = client.channels.cache.get(partners_hyper);
     if (channel) await channel.send('# Partnerstwo? PV!');
