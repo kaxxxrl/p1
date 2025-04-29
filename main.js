@@ -383,6 +383,6 @@ const guild = client.guilds.cache.get('1363565181048983562');
        partneringUsers.delete(message.author.id);
      }
    }
- });
+ };
 
 client.login(process.env.DISCORD_TOKEN);
