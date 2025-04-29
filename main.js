@@ -54,12 +54,16 @@ const onehr = '1346609316190486528';
 const thirtymin = '1346609317335531632';
 const fifteenmin = '1346609318476255293';
 const onemin = '1346609319877279794';
-const miastoAds = '1254165815071342602';
-const miastopartnerstwa = '1332399570872832151';
-const miastoall = '1254165638331502653';
-const miasto6h = '1254123088103346247';
-const miasto2gdz = '1254163564264947782';
-const zeroToOneHundred_2h = '1254162168899960883';
+
+// Nowe kanały Miasto
+const miasto_2h_1 = '1254162168899960883';
+const miasto_2h_2 = '1254165638331502653';
+const miasto_2h_3 = '1254165815071342602';
+const miasto_6h = '1254123088103346247';
+const miasto_2h_4 = '1254163564264947782';
+const miasto_1h = '1254163875620982834';
+const miasto_30m = '1254164476757020692';
+const miasto_partner = '1332399570872832151';
 
 // Nowe kanały HyperADS
 const hyper_0to100 = '1295166655415980072';
@@ -84,6 +88,44 @@ const adnet_partner = '1364690326094352455';
 
 client.once('ready', () => {
   console.log(`Bot ${client.user.tag} jest gotowy.`);
+  
+// Miasto - co 2 godziny
+setInterval(async () => {
+  const list = [
+    miasto_2h_1,
+    miasto_2h_2,
+    miasto_2h_3,
+    miasto_2h_4
+  ];
+  for (const id of list) {
+    const channel = client.channels.cache.get(id);
+    if (channel) await channel.send(serverAd);
+  }
+}, 2 * 60 * 60 * 1000);
+
+// Miasto - co 6 godzin
+setInterval(async () => {
+  const channel = client.channels.cache.get(miasto_6h);
+  if (channel) await channel.send(serverAd);
+}, 6 * 60 * 60 * 1000);
+
+// Miasto - co 1 godzina
+setInterval(async () => {
+  const channel = client.channels.cache.get(miasto_1h);
+  if (channel) await channel.send(serverAd);
+}, 60 * 60 * 1000);
+
+// Miasto - co 30 minut
+setInterval(async () => {
+  const channel = client.channels.cache.get(miasto_30m);
+  if (channel) await channel.send(serverAd);
+}, 30 * 60 * 1000);
+
+// Miasto - partnerstwo co 2 godziny
+setInterval(async () => {
+  const channel = client.channels.cache.get(miasto_partner);
+  if (channel) await channel.send('# Partnerstwo? PV!');
+}, 2 * 60 * 60 * 1000);
 
   // AdNet - co 5 minut
 setInterval(async () => {
