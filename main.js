@@ -86,9 +86,64 @@ const adnet_2h = '1335023854158086214';
 const adnet_6h = '1335024020046872627';
 const adnet_partner = '1364690326094352455';
 
+// Kanały - Centrala ADS
+const centrala_35m_1 = '1328101594566496277';
+const centrala_35m_2 = '1328101925429706764';
+const centrala_35m_3 = '1328101892483715193';
+const centrala_35m_4 = '1345799999375806504';
+const centrala_6h = '1329540658276335644';
+const centrala_1h = '1329540680946683966';
+const centrala_30m = '1329540714589061231';
+const centrala_15m = '1329540757756973146';
+const centrala_partner = '1328104421812338811';
+
 client.once('ready', () => {
   console.log(`Bot ${client.user.tag} jest gotowy.`);
-  
+
+  // Centrala ADS – co 35 minut
+setInterval(async () => {
+  const list = [
+    centrala_35m_1,
+    centrala_35m_2,
+    centrala_35m_3,
+    centrala_35m_4
+  ];
+  for (const id of list) {
+    const channel = client.channels.cache.get(id);
+    if (channel) await channel.send(serverAd);
+  }
+}, 35 * 60 * 1000);
+
+// Centrala ADS – co 6 godzin
+setInterval(async () => {
+  const channel = client.channels.cache.get(centrala_6h);
+  if (channel) await channel.send(serverAd);
+}, 6 * 60 * 60 * 1000);
+
+// Centrala ADS – co 1 godzina
+setInterval(async () => {
+  const channel = client.channels.cache.get(centrala_1h);
+  if (channel) await channel.send(serverAd);
+}, 1 * 60 * 60 * 1000);
+
+// Centrala ADS – co 30 minut
+setInterval(async () => {
+  const channel = client.channels.cache.get(centrala_30m);
+  if (channel) await channel.send(serverAd);
+}, 30 * 60 * 1000);
+
+// Centrala ADS – co 15 minut
+setInterval(async () => {
+  const channel = client.channels.cache.get(centrala_15m);
+  if (channel) await channel.send(serverAd);
+}, 15 * 60 * 1000);
+
+// Centrala ADS – partnerstwo co 30 minut
+setInterval(async () => {
+  const channel = client.channels.cache.get(centrala_partner);
+  if (channel) await channel.send('# Partnerstwo? PV!');
+}, 30 * 60 * 1000);
+
 // Miasto - co 2 godziny
 setInterval(async () => {
   const list = [
