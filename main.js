@@ -97,8 +97,62 @@ const centrala_30m = '1329540714589061231';
 const centrala_15m = '1329540757756973146';
 const centrala_partner = '1328104421812338811';
 
+// Kanały - ForestADS
+const forestads_6h = '1280118155284578376';
+const forestads_2h = '1280118155284578375';
+const forestads_1h_1 = '1280118155028467731';
+const forestads_30m = '1280118155028467730';
+const forestads_1h_2 = '1280118155028467723';
+const forestads_1h_3 = '1280118154898575457';
+const forestads_1h_4 = '1280118154743513198';
+const forestads_1h_5 = '1280118154743513195';
+const forestads_1h_6 = '1280118154743513194';
+const forestads_1h_7 = '1280118154743513192';
+const forestads_partner = '1280560815472115793';
+
 client.once('ready', () => {
   console.log(`Bot ${client.user.tag} jest gotowy.`);
+
+  // ForestADS – co 6 godzin
+setInterval(async () => {
+  const channel = client.channels.cache.get(forestads_6h);
+  if (channel) await channel.send(serverAd);
+}, 6 * 60 * 60 * 1000);
+
+// ForestADS – co 2 godziny
+setInterval(async () => {
+  const channel = client.channels.cache.get(forestads_2h);
+  if (channel) await channel.send(serverAd);
+}, 2 * 60 * 60 * 1000);
+
+// ForestADS – co 1 godzinę
+setInterval(async () => {
+  const list = [
+    forestads_1h_1,
+    forestads_1h_2,
+    forestads_1h_3,
+    forestads_1h_4,
+    forestads_1h_5,
+    forestads_1h_6,
+    forestads_1h_7
+  ];
+  for (const id of list) {
+    const channel = client.channels.cache.get(id);
+    if (channel) await channel.send(serverAd);
+  }
+}, 1 * 60 * 60 * 1000);
+
+// ForestADS – co 30 minut
+setInterval(async () => {
+  const channel = client.channels.cache.get(forestads_30m);
+  if (channel) await channel.send(serverAd);
+}, 30 * 60 * 1000);
+
+// ForestADS – partnerstwo co 35 minut
+setInterval(async () => {
+  const channel = client.channels.cache.get(forestads_partner);
+  if (channel) await channel.send('# Partnerstwo? PV!');
+}, 35 * 60 * 1000);
 
   // Centrala ADS – co 35 minut
 setInterval(async () => {
