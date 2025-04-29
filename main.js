@@ -110,10 +110,39 @@ const forestads_1h_5 = '1280118154743513195';
 const forestads_1h_6 = '1280118154743513194';
 const forestads_1h_7 = '1280118154743513192';
 const forestads_partner = '1280560815472115793';
+// OazisADS
+
+const oazis_1h = '1333736300339269705';
+const oazis_30m = '1333736201966059531';
+const oazis_15m = '1333736092482146354';
 
 client.once('ready', () => {
   console.log(`Bot ${client.user.tag} jest gotowy.`);
+  
+setInterval(async () => {
+  const list = [oazis_1h];
+  for (const id of list) {
+    const channel = client.channels.cache.get(id);
+    if (channel) await channel.send(serverAd);
+  }
+}, 1 * 60 * 60 * 1000);
+  
+  setInterval(async () => {
+  const list = [oazis_15m];
+  for (const id of list) {
+    const channel = client.channels.cache.get(id);
+    if (channel) await channel.send(serverAd);
+  }
+}, 15 * 60 * 1000);
 
+setInterval(async () => {
+  const list = [oazis_30m];
+  for (const id of list) {
+    const channel = client.channels.cache.get(id);
+    if (channel) await channel.send(serverAd);
+  }
+}, 30 * 60 * 1000);
+ 
   // ForestADS – co 6 godzin
 setInterval(async () => {
   const channel = client.channels.cache.get(forestads_6h);
