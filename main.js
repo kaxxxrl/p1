@@ -366,26 +366,7 @@ client.on('messageCreate', async (message) => {
         await message.channel.send("Mój właściciel @bqztk za niedługo na pewno dołączy do twojego serwera.");
         const owner = await client.users.fetch('1087428851036082266');
         await owner.send(`Wymagane dołączenie na serwer:\n${userAd}`);
-      }
-
-      const guild = client.guilds.cache.get('1363565181048983562');
-      if (!guild) return message.channel.send("❕ Nie znaleziono serwera.");
-
-      const member = await guild.members.fetch(message.author.id).catch(() => null);
-      if (!member) return message.channel.send("❕ Dołącz na serwer, aby kontynuować!");
-
-      const channel = guild.channels.cache.find(ch => ch.name === '💼・partnerstwa' && ch.isText());
-      if (!channel) return message.channel.send("Nie znaleziono kanału '💼・partnerstwa'.");
-
-      await channel.send(`${userAd}\n\nPartnerstwo z: ${member}`);
-      await message.channel.send("✅ Dziękujemy za partnerstwo! W razie pytań kontaktuj się z użytkownikiem @bqrzk (bqrzk)");
-
-      partnershipTimestamps.set(message.author.id, now);
-      partneringUsers.delete(message.author.id);
-    }
-  }
-});
-
+      
 const LOG_CHANNEL_ID = '1366849061637849088'; // <- wpisz tutaj ID kanału logów
 
 client.on('guildMemberAdd', async (member) => {
