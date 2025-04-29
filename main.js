@@ -123,6 +123,7 @@ setInterval(async () => {
   const channel = client.channels.cache.get(adnet_partner);
   if (channel) await channel.send('# Partnerstwo? PV!');
 }, 10 * 60 * 1000);
+  
   // Reklama partnerstw
   setInterval(async () => {
     const channel = client.channels.cache.get(channelId_partnerstwa);
