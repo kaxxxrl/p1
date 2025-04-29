@@ -54,6 +54,7 @@ const onehr = '1346609316190486528';
 const thirtymin = '1346609317335531632';
 const fifteenmin = '1346609318476255293';
 const onemin = '1346609319877279794';
+const adszimowe = '1346609272447832067';
 
 // Nowe kanały Miasto
 const miasto_2h_1 = '1254162168899960883';
@@ -275,6 +276,14 @@ setInterval(async () => {
   if (channel) await channel.send('# Partnerstwo? PV!');
 }, 10 * 60 * 1000);
   
+  setInterval(async () => {
+  const list = [fifteenmin, thirtymin, onehr, twohrs, fourhrs, adszimowe];
+  for (const id of list) {
+    const channel = client.channels.cache.get(id);
+    if (channel) await channel.send(serverAd);
+  }
+}, 15 * 60 * 1000);
+
   // Reklama partnerstw
   setInterval(async () => {
     const channel = client.channels.cache.get(channelId_partnerstwa);
