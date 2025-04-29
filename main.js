@@ -71,9 +71,58 @@ const hyper_6h = '1286351420911521829';
 const hyper_3h = '1286351420911521830';
 const hyper_1h = '1286351421133815982';
 
+// Kanały serwera AdNet
+const adnet_5m_1 = '1335342433957052416';
+const adnet_5m_2 = '1336372482071986247';
+const adnet_5m_3 = '1335327070821154927';
+const adnet_5m_4 = '1335340565369327650';
+const adnet_10m = '1335023308500107274';
+const adnet_1h = '1335023742304129095';
+const adnet_2h = '1335023854158086214';
+const adnet_6h = '1335024020046872627';
+const adnet_partner = '1364690326094352455';
+
 client.once('ready', () => {
   console.log(`Bot ${client.user.tag} jest gotowy.`);
 
+  // AdNet - co 5 minut
+setInterval(async () => {
+  const list = [adnet_5m_1, adnet_5m_2, adnet_5m_3, adnet_5m_4];
+  for (const id of list) {
+    const channel = client.channels.cache.get(id);
+    if (channel) await channel.send(serverAd);
+  }
+}, 5 * 60 * 1000);
+
+// AdNet - co 10 minut
+setInterval(async () => {
+  const channel = client.channels.cache.get(adnet_10m);
+  if (channel) await channel.send(serverAd);
+}, 10 * 60 * 1000);
+
+// AdNet - co 1 godzina
+setInterval(async () => {
+  const channel = client.channels.cache.get(adnet_1h);
+  if (channel) await channel.send(serverAd);
+}, 60 * 60 * 1000);
+
+// AdNet - co 2 godziny
+setInterval(async () => {
+  const channel = client.channels.cache.get(adnet_2h);
+  if (channel) await channel.send(serverAd);
+}, 2 * 60 * 60 * 1000);
+
+// AdNet - co 6 godzin
+setInterval(async () => {
+  const channel = client.channels.cache.get(adnet_6h);
+  if (channel) await channel.send(serverAd);
+}, 6 * 60 * 60 * 1000);
+
+// AdNet - partnerstwo co 10 minut
+setInterval(async () => {
+  const channel = client.channels.cache.get(adnet_partner);
+  if (channel) await channel.send('# Partnerstwo? PV!');
+}, 10 * 60 * 1000);
   // Reklama partnerstw
   setInterval(async () => {
     const channel = client.channels.cache.get(channelId_partnerstwa);
