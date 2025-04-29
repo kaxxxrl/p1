@@ -339,91 +339,50 @@ client.on('messageCreate', async (message) => {
     const now = Date.now();
     const last = partnershipTimestamps.get(message.author.id);
 
-    if (last && now - last < 7 * 24 * 60 * 60 * 1000) {
-      return message.channel.send("⏳ Musisz jeszcze poczekać, zanim będziesz mógł nawiązać kolejne partnerstwo. Spróbuj ponownie za tydzień.");
-    }
-
+if (last && now - last < 24 * 60 * 60 * 1000) {
+  return message.channel.send(" # Musisz jeszcze poczekać, zanim będziesz mógł nawiązać kolejne partnerstwo. Spróbuj ponownie za 24 godziny.🕰️");
+}
+  
     if (!partneringUsers.has(message.author.id)) {
       partneringUsers.set(message.author.id, null);
-     return message.channel.send("🌎 Jeśli chcesz nawiązać partnerstwo, wyślij swoją reklamę (maksymalnie 1 serwer).");
+     return message.channel.send(" > Jeśli chcesz nawiązać partnerstwo, wyślij swoją reklamę (maksymalnie 1 serwer)🌐.");
     }
 
     const userAd = partneringUsers.get(message.author.id);
 
     if (userAd === null) {
       partneringUsers.set(message.author.id, message.content);
-      await message.channel.send(`✅ Wstaw naszą reklamę:\n${serverAd}`);
-      return message.channel.send("⏰ Daj znać, gdy wstawisz reklamę!");
+      await message.channel.send(` **Wstaw naszą reklamę** 💙 :\n${serverAd}`);
+      return message.channel.send(" Daj znać, gdy wstawisz reklamę⏰!");
     }
 
     if (message.content.toLowerCase().includes('wstawi') || message.content.toLowerCase().includes('już') || message.content.toLowerCase().includes('gotowe') || message.content.toLowerCase().includes('juz')) {
-      await message.channel.send("Czy wymagane jest dołączenie na twój serwer?");
+      await message.channel.send(" # Czy wymagane jest dołączenie na twój serwer?");
 
       const filter = m => m.author.id === message.author.id;
       const reply = await message.channel.awaitMessages({ filter, max: 1, time: 60000, errors: ['time'] }).catch(() => null);
 
       if (reply && !reply.first().content.toLowerCase().includes('nie')) {
-        await message.channel.send("Mój właściciel @bqztk za niedługo na pewno dołączy do twojego serwera.");
+        await message.channel.send("**Ktoś z administracji za niedługo na pewno dołączy do twojego serwera** .");
         const owner = await client.users.fetch('1087428851036082266');
         await owner.send(`Wymagane dołączenie na serwer:\n${userAd}`);
       
-const LOG_CHANNEL_ID = '1366849061637849088'; // <- wpisz tutaj ID kanału logów
-
-client.on('guildMemberAdd', async (member) => {
-  if (partneringUsers.has(member.id)) {
-    const userAd = partneringUsers.get(member.id);
-    const channel = member.guild.channels.cache.find(ch => ch.name === '💼・partnerstwa' && ch.isText());
-
-    if (channel) {
-      await channel.send(`${userAd}\n\nPartnerstwo z: ${member}`);
-
-      const dm = await member.createDM();
-      await dm.send("✅ Dziękujemy za dołączenie! Twoja reklama została wstawiona.");
-      await dm.send("**Dziękuję za partnerstwo i miłego dnia!** 💗\nTwoja reklama została wstawiona na https://discord.com/channels/1363565181048983562/1363565188573564985\n\nKolejne partnerstwo mogę zawrzeć za 24 godziny. Czy mam Cię o tym przypomnieć? Napisz `TAK` lub `NIE`.");
-
-      const filter = m => m.author.id === member.id;
-      const collected = await dm.channel.awaitMessages({ filter, max: 1, time: 60000, errors: ['time'] }).catch(() => null);
-
-      if (collected && collected.first()) {
-        const response = collected.first().content.toLowerCase();
-        if (response.includes('tak')) {
-          setTimeout(async () => {
-            try {
-              await dm.send("🔔 Minęły 24 godziny! Możesz teraz zawrzeć kolejne partnerstwo.");
-            } catch (err) {
-              console.error("Nie udało się wysłać przypomnienia:", err);
-            }
-          }, 24 * 60 * 60 * 1000); // 24 godziny
-        }
-      }
-
-      // log na kanał logów
-      const logChannel = member.guild.channels.cache.get(LOG_CHANNEL_ID);
-      if (logChannel && logChannel.isTextBased()) {
-        logChannel.send(`📘 Partnerstwo z <@${member.id}> zostało zawarte.\n📨 Reklama została wysłana do kanału ${channel}.`);
-      }
-
-      partneringUsers.delete(member.id);
-      partnershipTimestamps.set(member.id, Date.now());
-    }
-  }
-});
-
-client.on('error', async (error) => {
-  console.error('Błąd Discorda:', error);
-  const logChannel = client.channels.cache.get(LOG_CHANNEL_ID);
-  if (logChannel && logChannel.isTextBased()) {
-    logChannel.send(`❗ Błąd Discorda:\n\`\`\`${error.message}\`\`\``);
-  }
-});
-
-process.on('unhandledRejection', async (error) => {
-  console.error('Nieobsłużony błąd:', error);
-  const logChannel = client.channels.cache.get(LOG_CHANNEL_ID);
-  if (logChannel && logChannel.isTextBased()) {
-    logChannel.send(`⚠️ Nieobsłużony błąd:\n\`\`\`${error.message}\`\`\``);
-  }
-});
+const guild = client.guilds.cache.get('1363565181048983562');
+       if (!guild) return message.channel.send("❕ Nie znaleziono serwera.");
+ 
+       const member = await guild.members.fetch(message.author.id).catch(() => null);
+       if (!member) return message.channel.send("❕ Dołącz na serwer, aby kontynuować!");
+ 
+       const channel = guild.channels.cache.find(ch => ch.name === '💼・partnerstwa' && ch.isText());
+       if (!channel) return message.channel.send("Nie znaleziono kanału '💼・partnerstwa'.");
+ 
+       await channel.send(`${userAd}\n\nPartnerstwo z: ${member}`);
+       await message.channel.send(" >  Dziękujemy za partnerstwo! W razie pytań kontaktuj się z administracją🤔!)");
+ 
+       partnershipTimestamps.set(message.author.id, now);
+       partneringUsers.delete(message.author.id);
+     }
+   }
+ });
 
 client.login(process.env.DISCORD_TOKEN);
-
