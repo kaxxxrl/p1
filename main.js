@@ -112,7 +112,7 @@ const oazis_30m = '1333736201966059531';
 const oazis_15m = '1333736092482146354';
 
 client.once('ready', () => {
-  console.log(Bot ${client.user.tag} jest gotowy.);
+console.log(`Bot ${client.user.tag} jest gotowy.`);
   
 setInterval(async () => {
   const list = [oazis_1h];
