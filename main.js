@@ -467,6 +467,4 @@ client.on('messageCreate', async (message) => {
  process.on('unhandledRejection', (error) => {
    console.error('Nieobsłużony błąd:', error);
  });
- 
 client.login(process.env.DISCORD_TOKEN);
-  
