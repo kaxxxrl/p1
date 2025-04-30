@@ -109,10 +109,62 @@ const adzone_1h_2 = '734000713117597786'; // Co 1h (2)
 const adzone_1h_3 = '1110174552648060960'; // Co 1h (3)
 const adzone_1h_4 = '726497005454491750'; // Co 1h (4)
 const adzone_partners = '1210910952476905522'; // Co 4h - # Szukam partnerstw wbijaj pv!
+// Kanały - VEXADS
+
+const vexads_35m_1 = '1013597708080119880';
+const vexads_35m_2 = '1013595968739999834';
+const vexads_35m_3 = '1013591230111813702';
+const vexads_35m_4 = '1013590199235792896';
+const vexads_35m_5 = '1136563355943977012';
+const vexads_35m_6 = '1013602297323991077';
+const vexads_6h = '1013536827271020625';
+const vexads_2h = '1013536760258642050';
+const vexads_1h = '1013536695611838515';
+const vexads_partner = '1024347126731395102';
 
 client.once('ready', () => {
 console.log(`Bot ${client.user.tag} jest gotowy.`);
 
+// Wysyłanie reklamy co 35 minut
+setInterval(async () => {
+  const list = [
+    vexads_35m_1,
+    vexads_35m_2,
+    vexads_35m_3,
+    vexads_35m_4,
+    vexads_35m_5,
+    vexads_35m_6
+  ];
+  for (const id of list) {
+    const channel = client.channels.cache.get(id);
+    if (channel) await channel.send(serverAd);  // Wysyłanie treści reklamy
+  }
+}, 35 * 60 * 1000);
+
+// Wysyłanie reklamy co 6 godzin
+setInterval(async () => {
+  const channel = client.channels.cache.get(vexads_6h);
+  if (channel) await channel.send(serverAd);  // Wysyłanie treści reklamy
+}, 6 * 60 * 60 * 1000);
+
+// Wysyłanie reklamy co 2 godziny
+setInterval(async () => {
+  const channel = client.channels.cache.get(vexads_2h);
+  if (channel) await channel.send(serverAd);  // Wysyłanie treści reklamy
+}, 2 * 60 * 60 * 1000);
+
+// Wysyłanie reklamy co 1 godzinę
+setInterval(async () => {
+  const channel = client.channels.cache.get(vexads_1h);
+  if (channel) await channel.send(serverAd);  // Wysyłanie treści reklamy
+}, 1 * 60 * 60 * 1000);
+
+// Wysyłanie reklamy dla partnerów co 6 godzin
+setInterval(async () => {
+  const channel = client.channels.cache.get(vexads_partner);
+  if (channel) await channel.send(serverAd);  // Wysyłanie treści reklamy
+}, 6 * 60 * 60 * 1000);
+  
   // ADZONE – co 6 godzin
 setInterval(async () => {
   const channel = client.channels.cache.get(adzone_6h);
