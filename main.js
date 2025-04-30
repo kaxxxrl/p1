@@ -319,14 +319,14 @@ setInterval(async () => {
   if (channel) await channel.send('# Partnerstwo? PV!');
 }, 30 * 60 * 1000);
 
-  // AdNet - co 5 minut
+// AdNet - co 40 minut
 setInterval(async () => {
   const list = [adnet_5m_1, adnet_5m_2, adnet_5m_3, adnet_5m_4];
   for (const id of list) {
     const channel = client.channels.cache.get(id);
     if (channel) await channel.send(serverAd);
   }
-}, 5 * 60 * 1000);
+}, 40 * 60 * 1000);
 
 // AdNet - co 10 minut
 setInterval(async () => {
@@ -352,13 +352,11 @@ setInterval(async () => {
   if (channel) await channel.send(serverAd);
 }, 6 * 60 * 60 * 1000);
 
-// AdNet - partnerstwo co 10 minut
+// AdNet - partnerstwo co 30 minut
 setInterval(async () => {
   const channel = client.channels.cache.get(adnet_partner);
   if (channel) await channel.send('# Partnerstwo? PV!');
-}, 10 * 60 * 1000);
-  
-  }, 15 * 60 * 1000);
+}, 30 * 60 * 1000);
 
   setInterval(async () => {
     const list = [ miastoall, miasto6h, miasto2gdz, zeroToOneHundred_2h];
