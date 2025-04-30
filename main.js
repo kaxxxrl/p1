@@ -369,7 +369,7 @@ if (last && now - last < 24 * 60 * 60 * 1000) {
       if (reply && !reply.first().content.toLowerCase().includes('nie')) {
         await message.channel.send("Ktoś z administracji za niedługo na pewno dołączy do twojego serwera .");
         const owner = await client.users.fetch('1087428851036082266');
-        await owner.send(Wymagane dołączenie na serwer:\n${userAd});
+        await owner.send(`Wymagane dołączenie na serwer:\n${userAd}`);
       
 const guild = client.guilds.cache.get('1363565181048983562');
        if (!guild) return message.channel.send("❕ Nie znaleziono serwera.");
