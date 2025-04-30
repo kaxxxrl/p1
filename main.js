@@ -25,11 +25,11 @@ Witamy w **Zatoka ADS**
 
 # ✨ Co oferujemy?
 
-➤ 🚀 Szybkie i darmowe promowanie serwerów Discord, social mediów i nie tylko!  
-➤ ❤️ Przyjazną i aktywną społeczność.  
-➤ 🗂️ Dużo przejrzystych kategorii reklamowych, by Twoja reklama trafiła dokładnie tam, gdzie trzeba.  
-➤ Ekonomia z nagrodami 🍒  
-➤ 🎉 Strefa 4fun — konkursy, mini-gry, eventy i luźne rozmowy!  
+➤ > 🚀 Szybkie i darmowe promowanie serwerów Discord, social mediów i nie tylko!  
+➤ > ❤️ Przyjazną i aktywną społeczność.  
+➤ >🗂️ Dużo przejrzystych kategorii reklamowych, by Twoja reklama trafiła dokładnie tam, gdzie trzeba.  
+➤ > Ekonomia z nagrodami 🍒  
+➤ > 🎉 Strefa 4fun — konkursy, mini-gry, eventy i luźne rozmowy!  
 ➤ ✨ Estetyczny, przejrzysty wygląd serwera, który sprzyja promocji i dobrej atmosferze.  
 ➤ 🎁 Giveaway'e i specjalne promocje dla aktywnych użytkowników!
 
@@ -407,25 +407,25 @@ client.on('messageCreate', async (message) => {
  
      if (!partneringUsers.has(message.author.id)) {
        partneringUsers.set(message.author.id, null);
-      return message.channel.send("🌎 Jeśli chcesz nawiązać partnerstwo, wyślij swoją reklamę (maksymalnie 1 serwer).");
+      return message.channel.send(" > 🌎 Jeśli chcesz nawiązać partnerstwo, wyślij swoją reklamę (maksymalnie 1 serwer).");
      }
  
      const userAd = partneringUsers.get(message.author.id);
  
      if (userAd === null) {
        partneringUsers.set(message.author.id, message.content);
-       await message.channel.send(`✅ Wstaw naszą reklamę:\n${serverAd}`);
-       return message.channel.send("⏰ Daj znać, gdy wstawisz reklamę!");
+       await message.channel.send(`> ✅ Wstaw naszą reklamę:\n${serverAd}`);
+       return message.channel.send(" > ⏰ Daj znać, gdy wstawisz reklamę!");
      }
  
      if (message.content.toLowerCase().includes('wstawi') || message.content.toLowerCase().includes('już') || message.content.toLowerCase().includes('gotowe') || message.content.toLowerCase().includes('juz')) {
-       await message.channel.send("Czy wymagane jest dołączenie na twój serwer?");
+       await message.channel.send(" > Czy wymagane jest dołączenie na twój serwer?");
  
        const filter = m => m.author.id === message.author.id;
        const reply = await message.channel.awaitMessages({ filter, max: 1, time: 60000, errors: ['time'] }).catch(() => null);
  
        if (reply && !reply.first().content.toLowerCase().includes('nie')) {
-         await message.channel.send("Mój właściciel @bqztk za niedługo na pewno dołączy do twojego serwera.");
+         await message.channel.send("> Administracja za niedługo na pewno dołączy do twojego serwera.");
          const owner = await client.users.fetch('1087428851036082266');
          await owner.send(`Wymagane dołączenie na serwer:\n${userAd}`);
        }
@@ -440,7 +440,7 @@ client.on('messageCreate', async (message) => {
        if (!channel) return message.channel.send("Nie znaleziono kanału '💼・partnerstwa'.");
  
        await channel.send(`${userAd}\n\nPartnerstwo z: ${member}`);
-       await message.channel.send("✅ Dziękujemy za partnerstwo! W razie pytań kontaktuj się z użytkownikiem @bqrzk (bqrzk)");
+       await message.channel.send(" > ✅ Dziękujemy za partnerstwo! W razie pytań kontaktuj się z użytkownikiem @bqrzk miłego dnia 💗 (bqrzk)");
  
        partnershipTimestamps.set(message.author.id, now);
        partneringUsers.delete(message.author.id);
