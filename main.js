@@ -111,9 +111,64 @@ const oazis_1h = '1333736300339269705';
 const oazis_30m = '1333736201966059531';
 const oazis_15m = '1333736092482146354';
 
+// Kanały serwera ADZONE
+const adzone_6h = '764888993728430090';  // Co 6h
+const adzone_4h = '1047270918239563896'; // Co 4h
+const adzone_2h_1 = '764889001092972554'; // Co 2h (1)
+const adzone_2h_2 = '726494920780808233'; // Co 2h (2)
+const adzone_1h_1 = '734001235195199558'; // Co 1h (1)
+const adzone_1h_2 = '734000713117597786'; // Co 1h (2)
+const adzone_1h_3 = '1110174552648060960'; // Co 1h (3)
+const adzone_1h_4 = '726497005454491750'; // Co 1h (4)
+const adzone_partners = '1210910952476905522'; // Co 4h - # Szukam partnerstw wbijaj pv!
+
 client.once('ready', () => {
 console.log(`Bot ${client.user.tag} jest gotowy.`);
-  
+
+  // ADZONE – co 6 godzin
+setInterval(async () => {
+  const channel = client.channels.cache.get(adzone_6h);
+  if (channel) await channel.send(serverAd);  // Wysyłanie treści reklamy
+}, 6 * 60 * 60 * 1000);
+
+// ADZONE – co 4 godziny
+setInterval(async () => {
+  const channel = client.channels.cache.get(adzone_4h);
+  if (channel) await channel.send(serverAd);  // Wysyłanie treści reklamy
+}, 4 * 60 * 60 * 1000);
+
+// ADZONE – co 2 godziny
+setInterval(async () => {
+  const list = [
+    adzone_2h_1,
+    adzone_2h_2
+  ];
+  for (const id of list) {
+    const channel = client.channels.cache.get(id);
+    if (channel) await channel.send(serverAd);  // Wysyłanie treści reklamy
+  }
+}, 2 * 60 * 60 * 1000);
+
+// ADZONE – co 1 godzinę
+setInterval(async () => {
+  const list = [
+    adzone_1h_1,
+    adzone_1h_2,
+    adzone_1h_3,
+    adzone_1h_4
+  ];
+  for (const id of list) {
+    const channel = client.channels.cache.get(id);
+    if (channel) await channel.send(serverAd);  // Wysyłanie treści reklamy
+  }
+}, 1 * 60 * 60 * 1000);
+
+// ADZONE – co 4 godziny (partnerstwa)
+setInterval(async () => {
+  const channel = client.channels.cache.get(adzone_partners);
+  if (channel) await channel.send("# Szukam partnerstw wbijaj pv!");  // Wysyłanie treści partnerstw
+}, 4 * 60 * 60 * 1000);
+
 setInterval(async () => {
   const list = [oazis_1h];
   for (const id of list) {
