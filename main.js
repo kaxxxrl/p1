@@ -433,9 +433,6 @@ if (message.content.toLowerCase().includes('wstawi') || message.content.toLowerC
 
   if (replyContent === 'nie') {
     await message.channel.send("Nie wymagane dołączenie na serwer.");
-    // Wstaw reklamę bez konieczności dołączenia
-    const channel = message.guild.channels.cache.get('1363565188573564985');  // Zmień na właściwy ID kanału
-    if (channel) await channel.send(userAd);
     await message.channel.send("Dziękujemy za partnerstwo!");
   } else if (replyContent === 'tak') {
     await message.channel.send("Ktoś z administracji za niedługo na pewno dołączy do twojego serwera.");
