@@ -39,7 +39,7 @@ Witamy w **Zatoka ADS**
 ⏳ Nie czekaj!  
 Dołącz już teraz i rozwiń swoje żagle z Zatoką ADS! ⛵✨
 
-link🔗: [https://discord.gg/zwJBBfNEGY](https://discord.gg/zwJBBfNEGY)  
+link🔗: https://discord.gg/PAxDwCWpDA
 ![Zatoka GIF](https://cdn.discordapp.com/attachments/1363565189105975531/1367057174265729095/lv_0_20250430103620.gif?ex=681332b5&is=6811e135&hm=1c6d43befed24d3a5f98bb963b575cad86c1ab20cd1edd4cfc61f509f782c126)
 `;
 
