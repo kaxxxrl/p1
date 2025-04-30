@@ -468,3 +468,4 @@ client.on('messageCreate', async (message) => {
    console.error('Nieobsłużony błąd:', error);
  });
 client.login(process.env.DISCORD_TOKEN);
+  
