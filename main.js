@@ -396,7 +396,7 @@ setInterval(async () => {
     if (channel) await channel.send(serverAd);
 }, 3 * 60 * 60 * 1000);  // Tutaj kończy się setInterval
 
-client.on("messageCreate", async (message) => {
+client.on('messageCreate', async (message) => {
   if (message.channel.type !== ChannelType.DM || message.author.bot) return;
 
   if (!partneringUsers.has(message.author.id)) {
