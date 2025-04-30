@@ -1,5 +1,6 @@
 const { Client, Intents, MessageEmbed } = require('discord.js-selfbot-v13');
 const express = require('express');
+const { ChannelType } = require('discord.js');
 const app = express();
 const PORT = 8080;
 
@@ -447,8 +448,9 @@ if (message.content.toLowerCase().includes('wstawi') || message.content.toLowerC
     const member = await guild.members.fetch(message.author.id).catch(() => null);
     if (!member) return message.channel.send("❕ Dołącz na serwer, aby kontynuować!");
 
-    const channel = guild.channels.cache.find(ch => ch.name === '💼・partnerstwa' && ch.isText());
-    if (!channel) return message.channel.send("Nie znaleziono kanału '💼・partnerstwa'.");
+const channel = guild.channels.cache.find(ch => ch.name === '💼・partnerstwa' && ch.type === ChannelType.GuildText);
+if (!channel) return message.channel.send("Nie znaleziono kanału '💼・partnerstwa'.");
+await channel.send(userAd);
 
     await owner.send(`Wymagane dołączenie na serwer:\n${userAd}`);
     await message.channel.send(" >  Dziękujemy za partnerstwo! W razie pytań kontaktuj się z administracją🤔!");
