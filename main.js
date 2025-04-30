@@ -380,13 +380,15 @@ const guild = client.guilds.cache.get('1363565181048983562');
        const channel = guild.channels.cache.find(ch => ch.name === '💼・partnerstwa' && ch.isText());
        if (!channel) return message.channel.send("Nie znaleziono kanału '💼・partnerstwa'.");
  
-        await owner.send(`Wymagane dołączenie na serwer:\n${userAd}`);
-       await message.channel.send(" >  Dziękujemy za partnerstwo! W razie pytań kontaktuj się z administracją🤔!)");
- 
-       partnershipTimestamps.set(message.author.id, now);
-       partneringUsers.delete(message.author.id);
-     }
-   }
- };
+                await owner.send(`Wymagane dołączenie na serwer:\n${userAd}`);
+        await message.channel.send(" >  Dziękujemy za partnerstwo! W razie pytań kontaktuj się z administracją🤔!");
+      } // <--- KONIEC: if (reply && ...)
+      
+      const now = Date.now();
+      partnershipTimestamps.set(message.author.id, now);
+      partneringUsers.delete(message.author.id);
+    } // <--- KONIEC: if (message.content.toLowerCase().includes(...))
+  } // <--- KONIEC: if (message.channel.name === 'partnerstwa')
+}; // <--- KONIEC: client.on('messageCreate', async message => {...})
 
 client.login(process.env.DISCORD_TOKEN);
