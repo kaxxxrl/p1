@@ -356,7 +356,7 @@ if (last && now - last < 24 * 60 * 60 * 1000) {
 
     if (userAd === null) {
       partneringUsers.set(message.author.id, message.content);
-      await message.channel.send( Wstaw naszą reklamę 💙 :\n${serverAd});
+     await message.channel.send(`Wstaw naszą reklamę 💙 :\n${serverAd}`);
       return message.channel.send(" Daj znać, gdy wstawisz reklamę⏰!");
     }
 
