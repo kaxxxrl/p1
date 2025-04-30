@@ -462,4 +462,4 @@ partnershipTimestamps.set(message.author.id, now);
 partneringUsers.delete(message.author.id);
   
 client.login(process.env.DISCORD_TOKEN);
-  }; 
+};
