@@ -397,64 +397,37 @@ setInterval(async () => {
 }, 3 * 60 * 60 * 1000);  // Tutaj kończy się setInterval
 
 client.on('messageCreate', async (message) => {
+  // Upewnij się, że wiadomość pochodzi z DM i nie jest od bota
   if (message.channel.type !== ChannelType.DM || message.author.bot) return;
 
+  // Jeśli użytkownik jeszcze nie wysłał swojej reklamy
   if (!partneringUsers.has(message.author.id)) {
     await message.channel.send("Jeśli chcesz nawiązać partnerstwo, wyślij swoją reklamę (maksymalnie 1 serwer)🌐.");
-    partneringUsers.set(message.author.id, null);
+    partneringUsers.set(message.author.id, null);  // Ustawiamy użytkownika, który będzie czekał na reklamę
     return;
   }
 
-  const userAd = partneringUsers.get(message.author.id);
+  const userAd = partneringUsers.get(message.author.id); // Pobieramy reklamę użytkownika
 
+  // Jeśli użytkownik jeszcze nie wysłał reklamy, zapisujemy ją
   if (userAd === null) {
-    partneringUsers.set(message.author.id, message.content);
+    partneringUsers.set(message.author.id, message.content);  // Zapisujemy reklamę użytkownika
     await message.channel.send(`Wstaw naszą reklamę 💙 :\n${serverAd}`);
-    return message.channel.send("Daj znać, gdy wstawisz reklamę⏰!");
+    return message.channel.send("Daj znać, gdy wstawisz reklamę⏰!");  // Pytamy, czy reklama została wstawiona
   }
 
-  if (message.content.toLowerCase().includes('wstawi') || message.content.toLowerCase().includes('już') || message.content.toLowerCase().includes('gotowe') || message.content.toLowerCase().includes('juz')) {
-    await message.channel.send("Czy wymagane jest dołączenie na twój serwer?");
+  // Jeśli użytkownik zgłasza, że już wstawił reklamę
+  if (message.content.toLowerCase().includes('wstawi') || message.content.toLowerCase().includes('gotowe')) {
+    await message.channel.send("Dziękujemy za partnerstwo! Twoja reklama została opublikowana.");
 
-    const filter = m => m.author.id === message.author.id;
-    const reply = await message.channel.awaitMessages({ filter, max: 1, time: 60000, errors: ['time'] }).catch(() => null);
+    // Wybierz kanał, do którego chcesz wysłać reklamę
+    const channel = message.guild.channels.cache.get('1363565188573564985'); // Podaj ID kanału, np. '💼・partnerstwa'
 
-    if (!reply) {
-      return message.channel.send("Czas na odpowiedź minął. Spróbuj ponownie!");
+    if (channel) {
+      await channel.send(`${message.author.tag} reklama: ${message.content}`);  // Wstawiamy reklamę na wybrany kanał
     }
 
-    const replyContent = reply.first().content.trim().toLowerCase();
-    console.log("Odpowiedź użytkownika:", replyContent);
-
-    if (replyContent === 'nie') {
-      await message.channel.send("Nie wymagane dołączenie na serwer.");
-
-      const channel = client.channels.cache.get('1363565188573564985'); // <- Twój ID kanału partnerstw
-      if (channel) await channel.send(userAd);
-
-      await message.channel.send("Dziękujemy za partnerstwo!");
-    } else if (replyContent === 'tak') {
-      await message.channel.send("Ktoś z administracji za niedługo na pewno dołączy do twojego serwera.");
-      const owner = await client.users.fetch('1087428851036082266');
-      await owner.send(`Wymagane dołączenie na serwer:\n${userAd}`);
-
-      const guild = client.guilds.cache.get('1363565181048983562');
-      if (!guild) return message.channel.send("❕ Nie znaleziono serwera.");
-
-      const member = await guild.members.fetch(message.author.id).catch(() => null);
-      if (!member) return message.channel.send("❕ Dołącz na serwer, aby kontynuować!");
-
-      const channel = guild.channels.cache.find(ch => ch.name === '💼・partnerstwa' && ch.type === ChannelType.GuildText);
-      if (!channel) return message.channel.send("Nie znaleziono kanału '💼・partnerstwa'.");
-      await channel.send(userAd);
-
-      await message.channel.send(" >  Dziękujemy za partnerstwo! W razie pytań kontaktuj się z administracją🤔!");
-    } else {
-      await message.channel.send("Nie rozumiem odpowiedzi. Proszę odpowiedzieć 'tak' lub 'nie'.");
-    }
-
-    partneringUsers.delete(message.author.id);
-    partnershipTimestamps.set(message.author.id, Date.now());
+  
   }
 });
 
