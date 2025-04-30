@@ -344,7 +344,7 @@ client.on('messageCreate', async (message) => {
     const last = partnershipTimestamps.get(message.author.id);
 
 if (last && now - last < 24 * 60 * 60 * 1000) {
-  return message.channel.send(" # Musisz jeszcze poczekać, zanim będziesz mógł nawiązać kolejne partnerstwo. Spróbuj ponownie za 24 godziny.🕰️");
+  return message.channel.send("  Musisz jeszcze poczekać, zanim będziesz mógł nawiązać kolejne partnerstwo. Spróbuj ponownie za 24 godziny.🕰️");
 }
   
     if (!partneringUsers.has(message.author.id)) {
@@ -356,18 +356,18 @@ if (last && now - last < 24 * 60 * 60 * 1000) {
 
     if (userAd === null) {
       partneringUsers.set(message.author.id, message.content);
-      await message.channel.send( **Wstaw naszą reklamę** 💙 :\n${serverAd});
+      await message.channel.send( Wstaw naszą reklamę 💙 :\n${serverAd});
       return message.channel.send(" Daj znać, gdy wstawisz reklamę⏰!");
     }
 
     if (message.content.toLowerCase().includes('wstawi') || message.content.toLowerCase().includes('już') || message.content.toLowerCase().includes('gotowe') || message.content.toLowerCase().includes('juz')) {
-      await message.channel.send(" # Czy wymagane jest dołączenie na twój serwer?");
+      await message.channel.send("  Czy wymagane jest dołączenie na twój serwer?");
 
       const filter = m => m.author.id === message.author.id;
       const reply = await message.channel.awaitMessages({ filter, max: 1, time: 60000, errors: ['time'] }).catch(() => null);
 
       if (reply && !reply.first().content.toLowerCase().includes('nie')) {
-        await message.channel.send("**Ktoś z administracji za niedługo na pewno dołączy do twojego serwera** .");
+        await message.channel.send("Ktoś z administracji za niedługo na pewno dołączy do twojego serwera .");
         const owner = await client.users.fetch('1087428851036082266');
         await owner.send(Wymagane dołączenie na serwer:\n${userAd});
       
