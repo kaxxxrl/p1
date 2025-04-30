@@ -460,5 +460,5 @@ if (message.content.toLowerCase().includes('wstawi') || message.content.toLowerC
 const now = Date.now();
 partnershipTimestamps.set(message.author.id, now);
 partneringUsers.delete(message.author.id);
-  
- client.login(process.env.DISCORD_TOKEN);
+
+client.login(process.env.DISCORD_TOKEN);
