@@ -124,7 +124,8 @@ const vexads_1h = '1013536695611838515';
 const vexads_partner = '1024347126731395102';
 
 client.once('ready', () => {
-console.log(`Bot ${client.user.tag} jest gotowy.`);
+  console.log('Bot is ready!');
+});
 
 // Wysyłanie reklamy co 35 minut
 setInterval(async () => {
@@ -464,16 +465,8 @@ client.on('messageCreate', async (message) => {
    console.error('Błąd Discorda:', error);
  });
  
- process.on('unhandledRejection', (error) => {
+ process.on('unhandledRejection'  => {
    console.error('Nieobsłużony błąd:', error);
  });
   
 client.login(process.env.DISCORD_TOKEN);
-  
-// Usuń wszystkie niewidzialne znaki przy zapisie (tylko raz uruchom)
-if (require.main === module) {
-  const fs = require('fs');
-  const cleaned = fs.readFileSync(__filename, 'utf8').replace(/[\u200B-\u200D\uFEFF]/g, '');
-  fs.writeFileSync(__filename, cleaned, 'utf8');
-  console.log("✅ Usunięto niewidzialne znaki.");
-}
