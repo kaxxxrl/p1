@@ -465,8 +465,9 @@ client.on('messageCreate', async (message) => {
    console.error('Błąd Discorda:', error);
  });
  
- process.on('unhandledRejection'  => {
-   console.error('Nieobsłużony błąd:', error);
- });
+process.on('unhandledRejection', (error) => {
+  console.error('Nieobsłużony błąd:', error);
+});
+
   
 client.login(process.env.DISCORD_TOKEN);
