@@ -1,4 +1,4 @@
- const { Client, Intents, MessageEmbed } = require('discord.js-selfbot-v13');
+const { Client, Intents, MessageEmbed } = require('discord.js-selfbot-v13');
 const express = require('express');
 const app = express();
 const PORT = 8080;
@@ -380,7 +380,7 @@ const guild = client.guilds.cache.get('1363565181048983562');
        const channel = guild.channels.cache.find(ch => ch.name === '💼・partnerstwa' && ch.isText());
        if (!channel) return message.channel.send("Nie znaleziono kanału '💼・partnerstwa'.");
  
-       await channel.send(${userAd}\n\nPartnerstwo z: ${member});
+        await owner.send(`Wymagane dołączenie na serwer:\n${userAd}`);
        await message.channel.send(" >  Dziękujemy za partnerstwo! W razie pytań kontaktuj się z administracją🤔!)");
  
        partnershipTimestamps.set(message.author.id, now);
