@@ -110,8 +110,8 @@ const adzone_1h_2 = '734000713117597786'; // Co 1h (2)
 const adzone_1h_3 = '1110174552648060960'; // Co 1h (3)
 const adzone_1h_4 = '726497005454491750'; // Co 1h (4)
 const adzone_partners = '1210910952476905522'; // Co 4h - # Szukam partnerstw wbijaj pv!
-// Kanały - VEXADS
 
+// Kanały - VEXADS
 const vexads_35m_1 = '1013597708080119880';
 const vexads_35m_2 = '1013595968739999834';
 const vexads_35m_3 = '1013591230111813702';
@@ -123,9 +123,42 @@ const vexads_2h = '1013536760258642050';
 const vexads_1h = '1013536695611838515';
 const vexads_partner = '1024347126731395102';
 
+// Reklamy co 2 godziny
+const miasto_2h_channels = [
+  '1254162168899960883',
+  '1254165638331502653',
+  '1254165815071342602',
+  '1254163564264947782'
+];
+
 client.once('ready', () => {
   console.log('Bot is ready!');
 });
+
+// Partnerstwo co 2 godziny
+setInterval(async () => {
+  const channel = client.channels.cache.get('1332399570872832151');
+  if (channel) await channel.send('# Partnerstwo? Zapraszam PV!');
+}, 2 * 60 * 60 * 1000);
+
+setInterval(async () => {
+  for (const id of miasto_2h_channels) {
+    const channel = client.channels.cache.get(id);
+    if (channel) await channel.send(serverAd);
+  }
+}, 2 * 60 * 60 * 1000);
+
+// Reklama co 6 godzin
+setInterval(async () => {
+  const channel = client.channels.cache.get('1254123088103346247');
+  if (channel) await channel.send(serverAd);
+}, 6 * 60 * 60 * 1000);
+
+// Reklama co 1 godzinę
+setInterval(async () => {
+  const channel = client.channels.cache.get('1254163875620982834');
+  if (channel) await channel.send(serverAd);
+}, 1 * 60 * 60 * 1000);
 
 // Wysyłanie reklamy co 35 minut
 setInterval(async () => {
