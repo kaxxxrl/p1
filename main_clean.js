@@ -469,3 +469,11 @@ client.on('messageCreate', async (message) => {
  });
   
 client.login(process.env.DISCORD_TOKEN);
+  
+// Usuń wszystkie niewidzialne znaki przy zapisie (tylko raz uruchom)
+if (require.main === module) {
+  const fs = require('fs');
+  const cleaned = fs.readFileSync(__filename, 'utf8').replace(/[\u200B-\u200D\uFEFF]/g, '');
+  fs.writeFileSync(__filename, cleaned, 'utf8');
+  console.log("✅ Usunięto niewidzialne znaki.");
+}
