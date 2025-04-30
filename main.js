@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(Serwer pingujący działa na porcie ${PORT});
+console.log(`Serwer pingujący działa na porcie ${PORT}`);
 });
 
 const serverAd = 
