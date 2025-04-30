@@ -341,8 +341,7 @@ setInterval(async () => {
   setInterval(async () => {
     const channel = client.channels.cache.get(hyper_3h);
     if (channel) await channel.send(serverAd);
-  }, 3 * 60 * 60 * 1000);
-});
+}, 3 * 60 * 60 * 1000);  // Tutaj kończy się setInterval
 
 client.on('messageCreate', async (message) => {
   if (!message.guild && !message.author.bot && message.author.id !== client.user.id) {
