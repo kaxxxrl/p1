@@ -389,6 +389,6 @@ const guild = client.guilds.cache.get('1363565181048983562');
       partneringUsers.delete(message.author.id);
     } // <--- KONIEC: if (message.content.toLowerCase().includes(...))
   } // <--- KONIEC: if (message.channel.name === 'partnerstwa')
-}; // <--- KONIEC: client.on('messageCreate', async message => {...})
+}); // <--- KONIEC: client.on('messageCreate', async message => {...})
 
 client.login(process.env.DISCORD_TOKEN);
