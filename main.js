@@ -455,11 +455,11 @@ if (message.content.toLowerCase().includes('wstawi') || message.content.toLowerC
   } else {
     await message.channel.send("Nie rozumiem odpowiedzi. Proszę odpowiedzieć 'tak' lub 'nie'.");
   }
-
-// Zapisz czas partnerstwa
-const now = Date.now();
-partnershipTimestamps.set(message.author.id, now);
-partneringUsers.delete(message.author.id);
   
-client.login(process.env.DISCORD_TOKEN);
-};
+        partnershipTimestamps.set(message.author.id, now);
+        partneringUsers.delete(message.author.id);
+      }
+    }
+  });
+ 
+ client.login(process.env.DISCORD_TOKEN);
