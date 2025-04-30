@@ -461,5 +461,4 @@ const now = Date.now();
 partnershipTimestamps.set(message.author.id, now);
 partneringUsers.delete(message.author.id);
 
-// Upewnij się, że logowanie jest tylko raz
 client.login(process.env.DISCORD_TOKEN);
