@@ -47,19 +47,7 @@ const partneringUsers = new Map();
 const partnershipTimestamps = new Map();
 const reminderUsers = new Map();
 
-// Istniejące kanały
-const channelId_partnerstwa = '1346609247869337701';
-const channelId_global = '1348329636056268911';
-const zimoweall = '1346609268375158834';
-const fourhrs = '1346609313329971293';
-const zeroToHundred = '1346609263681732710';
-const zimowe6h = '1346609312042324060';
-const twohrs = '1346609314927743047';
-const onehr = '1346609316190486528';
-const thirtymin = '1346609317335531632';
-const fifteenmin = '1346609318476255293';
-const onemin = '1346609319877279794';
-const adszimowe = '1346609272447832067';
+
 
 // Nowe kanały HyperADS
 const hyper_0to100 = '1295166655415980072';
@@ -317,43 +305,6 @@ setInterval(async () => {
   if (channel) await channel.send('# Partnerstwo? PV!');
 }, 10 * 60 * 1000);
   
-  setInterval(async () => {
-  const list = [fifteenmin, thirtymin, onehr, twohrs, fourhrs, adszimowe];
-  for (const id of list) {
-    const channel = client.channels.cache.get(id);
-    if (channel) await channel.send(serverAd);
-  }
-}, 15 * 60 * 1000);
-
-  // Reklama partnerstw
-  setInterval(async () => {
-    const channel = client.channels.cache.get(channelId_partnerstwa);
-    if (channel) await channel.send('# Szukam partnerstw dowolne serwery! Zapraszam pv');
-  }, 5 * 60 * 1000);
-
-  // Wysyłanie reklam w różnych odstępach czasu
-  setInterval(async () => {
-    const channel = client.channels.cache.get(onemin);
-    if (channel) await channel.send(serverAd);
-  }, 2.5 * 60 * 1000);
-
-  setInterval(async () => {
-    const g = client.channels.cache.get(channelId_global);
-    const z = client.channels.cache.get(zimoweall);
-    const zth = client.channels.cache.get(zeroToHundred);
-    if (g && z && zth) {
-      await g.send(serverAd);
-      await z.send(serverAd);
-      await zth.send(serverAd);
-    }
-  }, 10 * 60 * 1000);
-
-  setInterval(async () => {
-    const list = [fifteenmin, thirtymin, onehr, twohrs, fourhrs];
-    for (const id of list) {
-      const channel = client.channels.cache.get(id);
-      if (channel) await channel.send(serverAd);
-    }
   }, 15 * 60 * 1000);
 
   setInterval(async () => {
