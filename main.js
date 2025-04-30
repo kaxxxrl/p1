@@ -456,10 +456,18 @@ if (message.content.toLowerCase().includes('wstawi') || message.content.toLowerC
     await message.channel.send("Nie rozumiem odpowiedzi. Proszę odpowiedzieć 'tak' lub 'nie'.");
   }
   
-        partnershipTimestamps.set(message.author.id, now);
-        partneringUsers.delete(message.author.id);
-      }
-    }
-  });
+      partneringUsers.delete(member.id);
+       partnershipTimestamps.set(member.id, Date.now());
+     }
+   }
+ });
+ 
+ client.on('error', (error) => {
+   console.error('Błąd Discorda:', error);
+ });
+ 
+ process.on('unhandledRejection', (error) => {
+   console.error('Nieobsłużony błąd:', error);
+ });
  
  client.login(process.env.DISCORD_TOKEN);
