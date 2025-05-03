@@ -51,7 +51,7 @@ const reminderUsers = new Map();
 
 
 // Nowe kanały HyperADS
-const hyper_0to100 = '1295166655415980072';
+const hyper_0to100 = '1286351421691793461';
 const hyper_all = '1286351421133815988';
 const hyper_adsss = '1286351421133815991';
 const hyper_others = '1286351421457039388';
@@ -64,7 +64,7 @@ const hyper_1h = '1286351421133815982';
 const adnet_5m_1 = '1335342433957052416';
 const adnet_5m_2 = '1336372482071986247';
 const adnet_5m_3 = '1335327070821154927';
-const adnet_5m_4 = '1335340565369327650';
+const adnet_5m_4 = '1335340861151510541';
 const adnet_10m = '1335023308500107274';
 const adnet_1h = '1335023742304129095';
 const adnet_2h = '1335023854158086214';
@@ -92,10 +92,10 @@ const forestads_1h_3 = '1280118154898575457';
 const forestads_1h_4 = '1280118154743513198';
 const forestads_1h_5 = '1280118154743513195';
 const forestads_1h_6 = '1280118154743513194';
-const forestads_1h_7 = '1280118154743513192';
+const forestads_1h_7 = '1280118154743513191';
 const forestads_partner = '1280560815472115793';
-// OazisADS
 
+// OazisADS
 const oazis_1h = '1333736300339269705';
 const oazis_30m = '1333736201966059531';
 const oazis_15m = '1333736092482146354';
@@ -104,7 +104,7 @@ const oazis_15m = '1333736092482146354';
 const adzone_6h = '764888993728430090';  // Co 6h
 const adzone_4h = '1047270918239563896'; // Co 4h
 const adzone_2h_1 = '764889001092972554'; // Co 2h (1)
-const adzone_2h_2 = '726494920780808233'; // Co 2h (2)
+const adzone_2h_2 = '726494835971719178'; // Co 2h (2)
 const adzone_1h_1 = '734001235195199558'; // Co 1h (1)
 const adzone_1h_2 = '734000713117597786'; // Co 1h (2)
 const adzone_1h_3 = '1110174552648060960'; // Co 1h (3)
@@ -117,13 +117,66 @@ const vexads_35m_2 = '1013595968739999834';
 const vexads_35m_3 = '1013591230111813702';
 const vexads_35m_4 = '1013590199235792896';
 const vexads_35m_5 = '1136563355943977012';
-const vexads_35m_6 = '1013602297323991077';
+const vexads_35m_6 = '1013602400461930548';
 const vexads_6h = '1013536827271020625';
 const vexads_2h = '1013536760258642050';
 const vexads_1h = '1013536695611838515';
 const vexads_partner = '1024347126731395102';
 
-// Reklamy co 2 godziny
+// Kanały - ZimoweAds
+const zimowe_partner = '1346609247869337701';
+const zimowe_10m_1 = '1346609262356463736';
+const zimowe_2h_1 = '1346609266987110451';
+const zimowe_11m = '1346609268375158834';
+const zimowe_10m_2 = '1346609272447832067';
+const zimowe_10m_3 = '1346609282174685264';
+const zimowe_6h = '1346609312042324060';
+const zimowe_4h = '1346609313329971293';
+const zimowe_2h_2 = '1346609314927743047';
+const zimowe_1h = '1346609316190486528';
+
+setInterval(async () => {
+  const channel = client.channels.cache.get(zimowe_partner);
+  if (channel) await channel.send('# Partnerstwo? Zapraszam pv!');
+}, 6 * 60 * 1000);
+
+const zimowe10m = [zimowe_10m_1, zimowe_10m_2, zimowe_10m_3];
+for (const id of zimowe10m) {
+  setInterval(async () => {
+    const channel = client.channels.cache.get(id);
+    if (channel) await channel.send(serverAd);
+  }, 10 * 60 * 1000);
+}
+
+setInterval(async () => {
+  const channel = client.channels.cache.get(zimowe_11m);
+  if (channel) await channel.send(serverAd);
+}, 11 * 60 * 1000);
+
+const zimowe2h = [zimowe_2h_1, zimowe_2h_2];
+for (const id of zimowe2h) {
+  setInterval(async () => {
+    const channel = client.channels.cache.get(id);
+    if (channel) await channel.send(serverAd);
+  }, 2 * 60 * 60 * 1000);
+}
+
+setInterval(async () => {
+  const channel = client.channels.cache.get(zimowe_4h);
+  if (channel) await channel.send(serverAd);
+}, 4 * 60 * 60 * 1000);
+
+setInterval(async () => {
+  const channel = client.channels.cache.get(zimowe_6h);
+  if (channel) await channel.send(serverAd);
+}, 6 * 60 * 60 * 1000);
+
+setInterval(async () => {
+  const channel = client.channels.cache.get(zimowe_1h);
+  if (channel) await channel.send(serverAd);
+}, 60 * 60 * 1000);
+
+
 const miasto_2h_channels = [
   '1254162168899960883',
   '1254165638331502653',
