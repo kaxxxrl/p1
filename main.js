@@ -21,27 +21,26 @@ const serverAd = `
 **Twoje centrum reklam i promocji!**
 
 ⛵️ *Szukasz miejsca, gdzie Twoja reklama naprawdę wypłynie na szerokie wody?*
-Witamy w **Zatoka ADS**
+Witamy w **Zatoka ADS ** 
 
 # ✨ Co oferujemy?
 
-➤ > 🚀 Szybkie i darmowe promowanie serwerów Discord, social mediów i nie tylko!  
-➤ > ❤️ Przyjazną i aktywną społeczność.  
-➤ >🗂️ Dużo przejrzystych kategorii reklamowych, by Twoja reklama trafiła dokładnie tam, gdzie trzeba.  
-➤ > Ekonomia z nagrodami 🍒  
-➤ > 🎉 Strefa 4fun — konkursy, mini-gry, eventy i luźne rozmowy!  
-➤ ✨ Estetyczny, przejrzysty wygląd serwera, który sprzyja promocji i dobrej atmosferze.  
+➤ 🚀 Szybkie i darmowe promowanie serwerów Discord,social mediów i nie tylko!
+➤ ❤️ Przyjazną i aktywną społeczność.
+➤ 🗂️ Dużo przejrzystych kategorii reklamowych, by Twoja reklama trafiła dokładnie tam, gdzie trzeba.
+➤ Ekonomia z nagrodami 🍒 
+➤ 🎉 Strefa 4fun — konkursy, mini-gry, eventy i luźne rozmowy!
+➤ ✨ Estetyczny, przejrzysty wygląd serwera, który sprzyja promocji i dobrej atmosferze.
 ➤ 🎁 Giveaway'e i specjalne promocje dla aktywnych użytkowników!
+➤ 📜 Przejrzyste zasady, brak chaosu, aktywna moderacja 
+➤ 🤖 Tworzymy p4rtner-b0ty 
+➤🎥 Mamy usługi wybijania serwera na tiktoku
+``Aktualnie szukamy: realizatorów partnerstw,moderacji itp``
 
-# ⚓ Dlaczego właśnie Zatoka ADS?
-
-➤ 📜 Przejrzyste zasady, brak chaosu, aktywna moderacja
-
-⏳ Nie czekaj!  
+⏳ Nie czekaj!
 Dołącz już teraz i rozwiń swoje żagle z Zatoką ADS! ⛵✨
 
-link🔗: https://discord.gg/PAxDwCWpDA
-![Zatoka GIF](https://cdn.discordapp.com/attachments/1363565189105975531/1367057174265729095/lv_0_20250430103620.gif?ex=681332b5&is=6811e135&hm=1c6d43befed24d3a5f98bb963b575cad86c1ab20cd1edd4cfc61f509f782c126)
+link🔗: https://discord.gg/zwJBBfNEGY  https://cdn.discordapp.com/attachments/1363565189105975531/1367057174265729095/lv_0_20250430103620.gif?ex=681332b5&is=6811e135&hm=1c6d43befed24d3a5f98bb963b575cad86c1ab20cd1edd4cfc61f509f782c126&
 `;
 
 const partneringUsers = new Map();
