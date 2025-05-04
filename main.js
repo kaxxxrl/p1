@@ -21,11 +21,11 @@ const serverAd = `
 **Twoje centrum reklam i promocji!**
 
 ⛵️ *Szukasz miejsca, gdzie Twoja reklama naprawdę wypłynie na szerokie wody?*
-Witamy w **Zatoka ADS ** 
+Witamy w **Zatoka ADS** 
 
 # ✨ Co oferujemy?
 
-➤ 🚀 Szybkie i darmowe promowanie serwerów Discord,social mediów i nie tylko!
+➤ 🚀 Szybkie i darmowe promowanie serwerów Discord, social mediów i nie tylko!
 ➤ ❤️ Przyjazną i aktywną społeczność.
 ➤ 🗂️ Dużo przejrzystych kategorii reklamowych, by Twoja reklama trafiła dokładnie tam, gdzie trzeba.
 ➤ Ekonomia z nagrodami 🍒 
@@ -34,13 +34,15 @@ Witamy w **Zatoka ADS **
 ➤ 🎁 Giveaway'e i specjalne promocje dla aktywnych użytkowników!
 ➤ 📜 Przejrzyste zasady, brak chaosu, aktywna moderacja 
 ➤ 🤖 Tworzymy p4rtner-b0ty 
-➤🎥 Mamy usługi wybijania serwera na tiktoku
-``Aktualnie szukamy: realizatorów partnerstw,moderacji itp``
+➤ 🎥 Mamy usługi wybijania serwera na TikToku
+
+**Aktualnie szukamy:** realizatorów partnerstw, moderacji itp.
 
 ⏳ Nie czekaj!
 Dołącz już teraz i rozwiń swoje żagle z Zatoką ADS! ⛵✨
 
-link🔗: https://discord.gg/zwJBBfNEGY  https://cdn.discordapp.com/attachments/1363565189105975531/1367057174265729095/lv_0_20250430103620.gif?ex=681332b5&is=6811e135&hm=1c6d43befed24d3a5f98bb963b575cad86c1ab20cd1edd4cfc61f509f782c126&
+🔗 Link: https://discord.gg/zwJBBfNEGY  
+🎞️ Obrazek: https://cdn.discordapp.com/attachments/1363565189105975531/1367057174265729095/lv_0_20250430103620.gif?ex=681332b5&is=6811e135&hm=1c6d43befed24d3a5f98bb963b575cad86c1ab20cd1edd4cfc61f509f782c126&
 `;
 
 const partneringUsers = new Map();
@@ -48,6 +50,38 @@ const partnershipTimestamps = new Map();
 const reminderUsers = new Map();
 
 
+
+// TwojaPromka - Partnerstwo i reklamy
+
+// 1h Partnerstwo
+setInterval(async () => {
+  const channel = client.channels.cache.get('1361310692866527272');
+  if (channel) await channel.send('# Szukasz Partnerstw? Wbijaj pv!');
+}, 60 * 60 * 1000);
+
+// 30m Partnerstwo
+setInterval(async () => {
+  const channel = client.channels.cache.get('1361606930883149864');
+  if (channel) await channel.send('Szukam partnerstw! WBIJAJ PV!');
+}, 30 * 60 * 1000);
+
+// Reklamy – tablica z kanałami i interwałami
+const twojaPromkaAds = [
+  { id: '1361310691385933858', interval: 2 * 60 * 60 * 1000 }, // 2h
+  { id: '1361310691860152552', interval: 1 * 60 * 60 * 1000 }, // 1h
+  { id: '1361310692174467195', interval: 1 * 60 * 60 * 1000 }, // 1h
+  { id: '1361310692174467201', interval: 1 * 60 * 60 * 1000 }, // 1h
+  { id: '1361310692556410923', interval: 6 * 60 * 60 * 1000 }, // 6h
+  { id: '1361310692556410922', interval: 2 * 60 * 60 * 1000 }, // 2h
+  { id: '1361310692556410921', interval: 1 * 60 * 60 * 1000 }, // 1h
+];
+
+for (const ad of twojaPromkaAds) {
+  setInterval(async () => {
+    const channel = client.channels.cache.get(ad.id);
+    if (channel) await channel.send(serverAd); // zakładamy, że `serverAd` to Twoja wiadomość reklamowa
+  }, ad.interval);
+}
 
 // Nowe kanały HyperADS
 const hyper_0to100 = '1301959035938934835';
