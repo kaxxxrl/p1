@@ -136,6 +136,16 @@ const zimowe_2h_2 = '1346609314927743047';
 const zimowe_1h = '1346609316190486528';
 
 setInterval(async () => {
+  const channel = client.channels.cache.get('1367131358979293234');
+  if (channel) await channel.send('<@&1367194507925520404> szukam partnerstw! DM!');
+}, 10 * 60 * 1000); 
+
+setInterval(async () => {
+  const channel = client.channels.cache.get('1367131420119797882');
+  if (channel) await channel.send('# Szukam realizatorów partnerstw na mój serwer za free! Wejdź w bio i stwórz ticketa!');
+}, 30 * 60 * 1000); 
+
+setInterval(async () => {
   const channel = client.channels.cache.get(zimowe_partner);
   if (channel) await channel.send('# Partnerstwo? Zapraszam pv!');
 }, 6 * 60 * 1000);
