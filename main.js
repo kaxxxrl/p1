@@ -169,6 +169,59 @@ const zimowe_2h_2 = '1346609314927743047';
 const zimowe_1h = '1346609316190486528';
 
 setInterval(async () => {
+  const channel = client.channels.cache.get('1277993449202651247');
+  if (channel) await channel.send('# Partnerstwo? PV!');
+}, 30 * 60 * 1000); // co 30m
+
+setInterval(async () => {
+  const channel = client.channels.cache.get('1277994936356179998');
+  if (channel) await channel.send('**Szukam administracji! Wbij w link w bio i stwórz ticketa**');
+}, 12 * 60 * 60 * 1000); // co 12h
+
+[
+  '1272524036974317663',
+  '1272524036974317668',
+  '1277199881152237588',
+  '1279118755560951839',
+  '1272524037243015189'
+].forEach(id => {
+  setInterval(async () => {
+    const channel = client.channels.cache.get(id);
+    if (channel) await channel.send(serverAd);
+  }, 60 * 60 * 1000); // co 1h
+});
+
+setInterval(async () => {
+  const channel = client.channels.cache.get('1277200241971429426');
+  if (channel) await channel.send(serverAd);
+}, 5 * 60 * 1000); // co 5m
+
+setInterval(async () => {
+  const channel = client.channels.cache.get('1277200348976513114');
+  if (channel) await channel.send(serverAd);
+}, 10 * 60 * 1000); // co 10m
+
+setInterval(async () => {
+  const channel = client.channels.cache.get('1272524036974317670');
+  if (channel) await channel.send(serverAd);
+}, 15 * 60 * 1000); // co 15m
+
+setInterval(async () => {
+  const channel = client.channels.cache.get('1272524036974317671');
+  if (channel) await channel.send(serverAd);
+}, 30 * 60 * 1000); // co 30m
+
+setInterval(async () => {
+  const channel = client.channels.cache.get('1272524037243015190');
+  if (channel) await channel.send(serverAd);
+}, 2 * 60 * 60 * 1000); // co 2h
+
+setInterval(async () => {
+  const channel = client.channels.cache.get('1272524037243015191');
+  if (channel) await channel.send(serverAd);
+}, 6 * 60 * 60 * 1000); // co 6h
+
+setInterval(async () => {
   const channel = client.channels.cache.get('1367131358979293234');
   if (channel) await channel.send('<@&1367194507925520404> szukam partnerstw! DM!');
 }, 10 * 60 * 1000); 
@@ -546,7 +599,7 @@ client.on('messageCreate', async (message) => {
        return message.channel.send(" > ⏰ Daj znać, gdy wstawisz reklamę!");
      }
  
-     if (message.content.toLowerCase().includes('wstawi') || message.content.toLowerCase().includes('już') || message.content.toLowerCase().includes('gotowe') || message.content.toLowerCase().includes('juz')) {
+     if (!message.author.bot) {
        await message.channel.send(" > Czy wymagane jest dołączenie na twój serwer?");
  
        const filter = m => m.author.id === message.author.id;
