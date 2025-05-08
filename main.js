@@ -581,20 +581,7 @@ client.on('messageCreate', async (message) => {
    if (!message.guild && !message.author.bot && message.author.id !== client.user.id) {
      const now = Date.now();
      const last = partnershipTimestamps.get(message.author.id);
-
-     client.on('guildMemberRemove', async (member) => {
-  try {
-    if (member.user.bot) return;
-
-    await member.send(
-      `> 📝 Twoje reklamy zostały usunięte z serwera ponieważ opuściłeś serwer.\n` +
-      `> ❌ Następne takie zawarcie partnerstwa i opuszczenie serwera będzie skutkować blacklistą.`
-    );
-  } catch (err) {
-    console.error(`Nie udało się wysłać wiadomości do ${member.user.tag}:`, err);
-  }
-});
-
+     
      if (last && now - last < 7 * 24 * 60 * 60 * 1000) {
        return message.channel.send("⏳ Musisz jeszcze poczekać, zanim będziesz mógł nawiązać kolejne partnerstwo. Spróbuj ponownie za tydzień.");
      }
