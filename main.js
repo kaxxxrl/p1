@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-console.log(`Serwer pingujący działa na porcie ${PORT}`);
+  console.log(`Serwer pingujący działa na porcie ${PORT}`);
 });
 
 const serverAd = `
@@ -55,7 +55,6 @@ const serverAd = `
 const partneringUsers = new Map();
 const partnershipTimestamps = new Map();
 const reminderUsers = new Map();
-
 
 
 // TwojaPromka - Partnerstwo i reklamy
@@ -149,7 +148,7 @@ const adzone_1h_1 = '734001235195199558'; // Co 1h (1)
 const adzone_1h_2 = '734000713117597786'; // Co 1h (2)
 const adzone_1h_3 = '1110174552648060960'; // Co 1h (3)
 const adzone_1h_4 = '726497005454491750'; // Co 1h (4)
-const adzone_partners = '1210910952476905522'; // Co 4h - # Szukam partnerstw wbijaj pv!
+const adzone_partners = '1210910952476905522'; // Co 4h
 
 // Kanały - VEXADS
 const vexads_35m_1 = '1013597708080119880';
@@ -178,12 +177,12 @@ const zimowe_1h = '1346609316190486528';
 setInterval(async () => {
   const channel = client.channels.cache.get('1277993449202651247');
   if (channel) await channel.send('# Partnerstwo? PV!');
-}, 30 * 60 * 1000); // co 30m
+}, 30 * 60 * 1000);
 
 setInterval(async () => {
   const channel = client.channels.cache.get('1277994936356179998');
   if (channel) await channel.send('**Szukam administracji! Wbij w link w bio i stwórz ticketa**');
-}, 12 * 60 * 60 * 1000); // co 12h
+}, 12 * 60 * 60 * 1000);
 
 [
   '1272524036974317663',
@@ -195,38 +194,38 @@ setInterval(async () => {
   setInterval(async () => {
     const channel = client.channels.cache.get(id);
     if (channel) await channel.send(serverAd);
-  }, 60 * 60 * 1000); // co 1h
+  }, 60 * 60 * 1000);
 });
 
 setInterval(async () => {
   const channel = client.channels.cache.get('1277200241971429426');
   if (channel) await channel.send(serverAd);
-}, 5 * 60 * 1000); // co 5m
+}, 5 * 60 * 1000);
 
 setInterval(async () => {
   const channel = client.channels.cache.get('1277200348976513114');
   if (channel) await channel.send(serverAd);
-}, 10 * 60 * 1000); // co 10m
+}, 10 * 60 * 1000);
 
 setInterval(async () => {
   const channel = client.channels.cache.get('1272524036974317670');
   if (channel) await channel.send(serverAd);
-}, 15 * 60 * 1000); // co 15m
+}, 15 * 60 * 1000);
 
 setInterval(async () => {
   const channel = client.channels.cache.get('1272524036974317671');
   if (channel) await channel.send(serverAd);
-}, 30 * 60 * 1000); // co 30m
+}, 30 * 60 * 1000);
 
 setInterval(async () => {
   const channel = client.channels.cache.get('1272524037243015190');
   if (channel) await channel.send(serverAd);
-}, 2 * 60 * 60 * 1000); // co 2h
+}, 2 * 60 * 60 * 1000);
 
 setInterval(async () => {
   const channel = client.channels.cache.get('1272524037243015191');
   if (channel) await channel.send(serverAd);
-}, 6 * 60 * 60 * 1000); // co 6h
+}, 6 * 60 * 60 * 1000);
 
 setInterval(async () => {
   const channel = client.channels.cache.get('1367131358979293234');
@@ -278,7 +277,6 @@ setInterval(async () => {
   const channel = client.channels.cache.get(zimowe_1h);
   if (channel) await channel.send(serverAd);
 }, 60 * 60 * 1000);
-
 
 const miasto_2h_channels = [
   '1254177068846022727',
@@ -356,7 +354,7 @@ setInterval(async () => {
   if (channel) await channel.send(serverAd);  // Wysyłanie treści reklamy
 }, 6 * 60 * 60 * 1000);
   
-  // ADZONE – co 6 godzin
+// ADZONE – co 6 godzin
 setInterval(async () => {
   const channel = client.channels.cache.get(adzone_6h);
   if (channel) await channel.send(serverAd);  // Wysyłanie treści reklamy
@@ -408,7 +406,7 @@ setInterval(async () => {
   }
 }, 1 * 60 * 60 * 1000);
   
-  setInterval(async () => {
+setInterval(async () => {
   const list = [oazis_15m];
   for (const id of list) {
     const channel = client.channels.cache.get(id);
@@ -424,7 +422,7 @@ setInterval(async () => {
   }
 }, 30 * 60 * 1000);
  
-  // ForestADS – co 6 godzin
+// ForestADS – co 6 godzin
 setInterval(async () => {
   const channel = client.channels.cache.get(forestads_6h);
   if (channel) await channel.send(serverAd);
@@ -465,7 +463,7 @@ setInterval(async () => {
   if (channel) await channel.send('# Partnerstwo? PV!');
 }, 35 * 60 * 1000);
 
-  // Centrala ADS – co 35 minut
+// Centrala ADS – co 35 minut
 setInterval(async () => {
   const list = [
     centrala_35m_1,
@@ -509,31 +507,30 @@ setInterval(async () => {
   if (channel) await channel.send('# Partnerstwo? PV!');
 }, 30 * 60 * 1000);
 
-
-  // Nowe interwały HyperADS
-  setInterval(async () => {
-    const channels = [hyper_0to100, hyper_all, hyper_adsss, hyper_others, hyper_1h];
-    for (const id of channels) {
-      const channel = client.channels.cache.get(id);
-      if (channel) await channel.send(serverAd);
-    }
- 
-  setInterval(async () => {
-    const channel = client.channels.cache.get(partners_hyper);
-    if (channel) await channel.send('# Partnerstwo? PV!');
-  }, 1 * 60 * 60 * 1000);
-
-  setInterval(async () => {
-    const channel = client.channels.cache.get(hyper_6h);
+// Nowe interwały HyperADS (tu była poprawa!)
+setInterval(async () => {
+  const channels = [hyper_0to100, hyper_all, hyper_adsss, hyper_others, hyper_1h];
+  for (const id of channels) {
+    const channel = client.channels.cache.get(id);
     if (channel) await channel.send(serverAd);
-  }, 6 * 60 * 60 * 1000);
+  }
+}, 1 * 60 * 60 * 1000);
 
-  setInterval(async () => {
-    const channel = client.channels.cache.get(hyper_3h);
-    if (channel) await channel.send(serverAd);
-}, 3 * 60 * 60 * 1000);  // Tutaj kończy się setInterval
+setInterval(async () => {
+  const channel = client.channels.cache.get(partners_hyper);
+  if (channel) await channel.send('# Partnerstwo? PV!');
+}, 1 * 60 * 60 * 1000);
 
-    // Reklama co 30 minut
+setInterval(async () => {
+  const channel = client.channels.cache.get(hyper_6h);
+  if (channel) await channel.send(serverAd);
+}, 6 * 60 * 60 * 1000);
+
+setInterval(async () => {
+  const channel = client.channels.cache.get(hyper_3h);
+  if (channel) await channel.send(serverAd);
+}, 3 * 60 * 60 * 1000);
+
 setInterval(async () => {
   const channel = client.channels.cache.get('1363565188401332312');
   if (channel) await channel.send(serverAd);
@@ -583,7 +580,7 @@ client.on('messageCreate', async (message) => {
        if (!channel) return message.channel.send("Nie znaleziono kanału '💼・partnerstwa'.");
  
        await channel.send(`${userAd}\n\nPartnerstwo z: ${member}`);
-       await message.channel.send(" > ✅ **Dziękujemy za partnerstwo!** Jest ono na kanale https://discord.com/channels/1363565181048983562/1363565188573564985 . W razie pytań kontaktuj się z użytkownikiem @vmilo2 miłego dnia 💗");
+       await message.channel.send(" > ✅ **Dziękujemy za partnerstwo!** Jest ono na kanale https://discord.com/channels/1363565181048983562/1363565188573564985 . W razie pytań kontaktuj się z uży...");
  
        partnershipTimestamps.set(message.author.id, now);
        partneringUsers.delete(message.author.id);
