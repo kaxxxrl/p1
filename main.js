@@ -531,11 +531,6 @@ setInterval(async () => {
   if (channel) await channel.send(serverAd);
 }, 3 * 60 * 60 * 1000);
 
-setInterval(async () => {
-  const channel = client.channels.cache.get('1363565188401332312');
-  if (channel) await channel.send(serverAd);
-}, 30 * 60 * 1000);
-
 client.on('messageCreate', async (message) => {
    if (!message.guild && !message.author.bot && message.author.id !== client.user.id) {
      const now = Date.now();
