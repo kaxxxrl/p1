@@ -17,32 +17,39 @@ console.log(`Serwer pingujący działa na porcie ${PORT}`);
 });
 
 const serverAd = `
-# Zatoka ADS ⚡️
-**Twoje centrum reklam i promocji!**
+# \🌊 𝒁𝒂𝒕𝒐𝒌𝒐𝒘𝒆 \🐚  𝑹𝒆𝒌𝒍𝒂𝒎y  \🌊
 
-⛵️ *Szukasz miejsca, gdzie Twoja reklama naprawdę wypłynie na szerokie wody?*
-Witamy w **Zatoka ADS** 
+✩ Marzysz o miejscu, gdzie Twoje projekty zabłysną, a społeczność przyjmie Cię jak starego znajomego?
+• Właśnie je znalazłeś – dołącz do **naszej zatoki** już teraz!
 
-# ✨ Co oferujemy?
+───────୨⋆｡‧˚🌊🐠˚‧｡⋆ৎ───────
+💧❔🌊 𝑪𝑶 𝑷𝑹𝒁𝒀𝑮𝑶𝑻𝑶𝑾𝑨𝑳𝑰𝑺́𝑴𝒀 💧❔🌊
 
-➤ 🚀 Szybkie i darmowe promowanie serwerów Discord, social mediów i nie tylko!
-➤ ❤️ Przyjazną i aktywną społeczność.
-➤ 🗂️ Dużo przejrzystych kategorii reklamowych, by Twoja reklama trafiła dokładnie tam, gdzie trzeba.
-➤ Ekonomia z nagrodami 🍒 
-➤ 🎉 Strefa 4fun — konkursy, mini-gry, eventy i luźne rozmowy!
-➤ ✨ Estetyczny, przejrzysty wygląd serwera, który sprzyja promocji i dobrej atmosferze.
-➤ 🎁 Giveaway'e i specjalne promocje dla aktywnych użytkowników!
-➤ 📜 Przejrzyste zasady, brak chaosu, aktywna moderacja 
-➤ 🤖 Tworzymy p4rtner-b0ty 
-➤ 🎥 Mamy usługi wybijania serwera na TikToku
+> 🐬 Eventy & Giveawaye – **regularne nagrody za aktywność i udział!**
+> 🐟 Strefa Rozrywki – **gry, boty i czat pełen śmiechu**
+> 🌴 Własna Waluta – **zdobywaj, inwestuj, rozwijaj się!**
+> 🐚 Ciepła Społeczność – **zero toksyczności, tylko pozytywna energia**
+> 🐳 Pomocna Ekipka – **zawsze gotowa rozwiązać Twój problem**
+> 🐡 Partnerstwa – **wspólna promocja i rozwój**
+> 🧜 Autorskie Systemy – **funkcje, jakich nie znajdziesz nigdzie indziej**
+> 🪸 Mnóstwo Kanałów Reklamowych – **od serwerów po social media**
+> 🐋 System Promocji – **reklama na luzie, z klasą i zasięgiem**
 
-**Aktualnie szukamy:** realizatorów partnerstw, moderacji itp.
+───────୨⋆｡‧˚🌊🐠˚‧｡⋆ৎ───────
+💧❔🌊 𝑲𝑶GO 𝑪𝑯𝑪𝑬𝑴𝒀 𝑷𝑶𝑾𝑰𝑻𝑨𝑪́ 💧❔🌊
 
-⏳ Nie czekaj!
-Dołącz już teraz i rozwiń swoje żagle z Zatoką ADS! ⛵✨
-
-🔗 Link: https://discord.gg/zwJBBfNEGY  
-🎞️ Obrazek: https://cdn.discordapp.com/attachments/1363565189105975531/1367057174265729095/lv_0_20250430103620.gif?ex=681332b5&is=6811e135&hm=1c6d43befed24d3a5f98bb963b575cad86c1ab20cd1edd4cfc61f509f782c126&
+🧭 Moderatorów – czuwaj z nami nad porządkiem  
+🌊 Partnerów – razem zdziałamy więcej  
+🐠 Boosterów – dzięki Wam możemy się rozwijać  
+🪼 Nowych Twarzy – każda osoba wnosi coś wyjątkowego  
+🌟 **Ciebie** – serio, nie może Cię zabraknąć!
+|| @everyone || 
+───────୨⋆｡‧˚🌊🐠˚‧｡⋆ৎ───────
+💦 Nadal się wahasz? 💦  
+💠 Daj nam szansę – wpadnij, zostań, zakochaj się w klimacie! 💠
+**GIF1:** https://cdn.discordapp.com/attachments/1378713593515872378/1380523675299614780/standard_5.gif?ex=6844305d&is=6842dedd&hm=e55cc70c9cdb017aabf9c7074c2ae49e2a3e38524068fa8b518914bf75c55c98&
+**GIF2:**  https://cdn.discordapp.com/attachments/1378713593515872378/1380248358840696893/standard_4.gif?ex=6843d8b4&is=68428734&hm=9d66cb68c21d95c190c14cf6eb85d8e1e743581b4dc8666fee95876fe13da1dd&
+**LINK:** discord.gg/zatokowereklamy
 `;
 
 const partneringUsers = new Map();
@@ -502,52 +509,6 @@ setInterval(async () => {
   if (channel) await channel.send('# Partnerstwo? PV!');
 }, 30 * 60 * 1000);
 
-// AdNet - co 40 minut
-setInterval(async () => {
-  const list = [adnet_5m_1, adnet_5m_2, adnet_5m_3, adnet_5m_4];
-  for (const id of list) {
-    const channel = client.channels.cache.get(id);
-    if (channel) await channel.send(serverAd);
-  }
-}, 40 * 60 * 1000);
-
-// AdNet - co 10 minut
-setInterval(async () => {
-  const channel = client.channels.cache.get(adnet_10m);
-  if (channel) await channel.send(serverAd);
-}, 10 * 60 * 1000);
-
-// AdNet - co 1 godzina
-setInterval(async () => {
-  const channel = client.channels.cache.get(adnet_1h);
-  if (channel) await channel.send(serverAd);
-}, 60 * 60 * 1000);
-
-// AdNet - co 2 godziny
-setInterval(async () => {
-  const channel = client.channels.cache.get(adnet_2h);
-  if (channel) await channel.send(serverAd);
-}, 2 * 60 * 60 * 1000);
-
-// AdNet - co 6 godzin
-setInterval(async () => {
-  const channel = client.channels.cache.get(adnet_6h);
-  if (channel) await channel.send(serverAd);
-}, 6 * 60 * 60 * 1000);
-
-// AdNet - partnerstwo co 30 minut
-setInterval(async () => {
-  const channel = client.channels.cache.get(adnet_partner);
-  if (channel) await channel.send('# Partnerstwo? PV!');
-}, 30 * 60 * 1000);
-
-  setInterval(async () => {
-    const list = [ miastoall, miasto6h, miasto2gdz, zeroToOneHundred_2h];
-    for (const id of list) {
-      const channel = client.channels.cache.get(id);
-      if (channel) await channel.send(serverAd);
-    }
-  }, 2 * 60 * 60 * 1000);
 
   // Nowe interwały HyperADS
   setInterval(async () => {
@@ -556,12 +517,7 @@ setInterval(async () => {
       const channel = client.channels.cache.get(id);
       if (channel) await channel.send(serverAd);
     }
-  }, 1 * 60 * 60 * 1000);
- setInterval(async () => {
-    const channel = client.channels.cache.get(miastopartnerstwa);
-    if (channel) await channel.send('# Partnerstwo? PV!');
-  }, 2 * 60 * 60 * 1000);
-  
+ 
   setInterval(async () => {
     const channel = client.channels.cache.get(partners_hyper);
     if (channel) await channel.send('# Partnerstwo? PV!');
@@ -577,18 +533,24 @@ setInterval(async () => {
     if (channel) await channel.send(serverAd);
 }, 3 * 60 * 60 * 1000);  // Tutaj kończy się setInterval
 
+    // Reklama co 30 minut
+setInterval(async () => {
+  const channel = client.channels.cache.get('1363565188401332312');
+  if (channel) await channel.send(serverAd);
+}, 30 * 60 * 1000);
+
 client.on('messageCreate', async (message) => {
    if (!message.guild && !message.author.bot && message.author.id !== client.user.id) {
      const now = Date.now();
      const last = partnershipTimestamps.get(message.author.id);
      
      if (last && now - last < 7 * 24 * 60 * 60 * 1000) {
-       return message.channel.send("⏳ Musisz jeszcze poczekać, zanim będziesz mógł nawiązać kolejne partnerstwo. Spróbuj ponownie za tydzień.");
+       return message.channel.send("> ⏳ **Musisz jeszcze poczekać, zanim będziesz mógł nawiązać kolejne partnerstwo. Spróbuj ponownie za tydzień**.");
      }
  
      if (!partneringUsers.has(message.author.id)) {
        partneringUsers.set(message.author.id, null);
-      return message.channel.send(" > 🌎 Jeśli chcesz nawiązać partnerstwo, wyślij swoją reklamę (maksymalnie 1 serwer).");
+      return message.channel.send(" > 🌎 **Jeśli chcesz nawiązać partnerstwo, wyślij swoją reklamę (maksymalnie 1 serwer)**.");
      }
  
      const userAd = partneringUsers.get(message.author.id);
@@ -600,19 +562,19 @@ client.on('messageCreate', async (message) => {
      }
  
      if (!message.author.bot) {
-       await message.channel.send(" > Czy wymagane jest dołączenie na twój serwer?");
+       await message.channel.send(" > **Czy wymagane jest dołączenie na twój serwer?** Tak/Nie");
  
        const filter = m => m.author.id === message.author.id;
        const reply = await message.channel.awaitMessages({ filter, max: 1, time: 60000, errors: ['time'] }).catch(() => null);
  
        if (reply && !reply.first().content.toLowerCase().includes('nie')) {
-         await message.channel.send("> Administracja za niedługo na pewno dołączy do twojego serwera.");
-         const owner = await client.users.fetch('1087428851036082266');
+         await message.channel.send("> **Przedstawiciel bota za niedługo na pewno dołączy do twojego serwera**.");
+         const owner = await client.users.fetch('1377884973171740702');
          await owner.send(`Wymagane dołączenie na serwer:\n${userAd}`);
        }
  
        const guild = client.guilds.cache.get('1363565181048983562');
-       if (!guild) return message.channel.send("❕ Nie znaleziono serwera.");
+       if (!guild) return message.channel.send("> ❕ Nie znaleziono serwera.");
  
        const member = await guild.members.fetch(message.author.id).catch(() => null);
        if (!member) return message.channel.send("❕ Dołącz na serwer, aby kontynuować!");
@@ -621,7 +583,7 @@ client.on('messageCreate', async (message) => {
        if (!channel) return message.channel.send("Nie znaleziono kanału '💼・partnerstwa'.");
  
        await channel.send(`${userAd}\n\nPartnerstwo z: ${member}`);
-       await message.channel.send(" > ✅ Dziękujemy za partnerstwo! W razie pytań kontaktuj się z użytkownikiem @bqrzk miłego dnia 💗 (bqrzk)");
+       await message.channel.send(" > ✅ **Dziękujemy za partnerstwo!** Jest ono na kanale https://discord.com/channels/1363565181048983562/1363565188573564985 . W razie pytań kontaktuj się z użytkownikiem @vmilo2 miłego dnia 💗");
  
        partnershipTimestamps.set(message.author.id, now);
        partneringUsers.delete(message.author.id);
